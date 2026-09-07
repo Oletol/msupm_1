@@ -3,21 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 1 — Personality, Values &amp; Public Service | B2 / FCE</title>
+<title>Unit 1 — Personality, Values &amp; Public Service | B1+ / FCE</title>
 <style>
-/* ============================================================
-   UNIT 1 — PERSONALITY, CORE VALUES & FAMILY BACKGROUND
-   English for Public Administration · CEFR B2 · Cambridge FCE
-   Student's Book — Web Edition
-   ------------------------------------------------------------
-   NOTE FOR DEVELOPERS / TEACHERS:
-   This file contains NO answer keys and NO grading logic.
-   All JavaScript is purely for the user interface:
-   timers, word counter, accordions, tabs, progress bar,
-   local draft saving and printing.
-   ============================================================ */
-
-/* ---------- 1. DESIGN TOKENS ---------- */
 :root{
   --navy:#16233f;
   --navy-2:#1f3157;
@@ -115,7 +102,7 @@ header.hero::after{
   background-size:100% 34px;opacity:.35;pointer-events:none;
 }
 .hero .eyebrow{
-  display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+  display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.22em;text-transform:case;
   color:var(--gold-soft);border:1px solid rgba(232,201,119,.45);padding:5px 13px;border-radius:20px;margin-bottom:18px;
 }
 .hero h1{color:#fff;font-size:clamp(30px,5.2vw,47px);margin-bottom:10px;letter-spacing:-.015em;}
@@ -125,7 +112,7 @@ header.hero::after{
   background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.20);
   border-radius:10px;padding:9px 14px;font-size:13px;color:rgba(255,255,255,.94);
 }
-.meta-chip b{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);font-weight:800;margin-bottom:2px;}
+.meta-chip b{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:case;color:var(--gold-soft);font-weight:800;margin-bottom:2px;}
 
 /* ---------- 6. OUTCOMES BOX ---------- */
 .outcomes{
@@ -148,7 +135,7 @@ header.hero::after{
   background:rgba(192,138,46,.20);
 }
 .lesson-divider .tag{
-  font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);
+  font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:case;color:var(--gold-soft);
 }
 .lesson-divider h2{color:#fff;font-size:clamp(22px,3.6vw,31px);margin:6px 0 8px;position:relative;}
 .lesson-divider p{margin:0;color:rgba(255,255,255,.84);font-size:15px;max-width:640px;position:relative;}
@@ -171,11 +158,11 @@ header.hero::after{
 .task-head .t-sub{font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.02em;}
 .badges{display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
 .badge{
-  font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:case;
   padding:5px 10px;border-radius:20px;white-space:nowrap;
 }
 .b-time{background:var(--bg-2);color:var(--ink-2);border:1px solid var(--line);}
-.b-fce{background:#fdf3e0;color:#8a5d13;border:1px solid #f0dcb2;}
+.b-fce{background:#fdf3e0;color:#8a5d13;border:1px solid #f0dcB1+;}
 .b-skill{background:var(--teal-soft);color:#155f59;border:1px solid #b6e0da;}
 .b-hw{background:#f3e8f1;color:#6b3a5e;border:1px solid #e4cfe0;}
 .task-body{padding:24px;}
@@ -233,7 +220,7 @@ header.hero::after{
 .ans-box{
   width:52px;height:34px;border:2px solid var(--navy-soft);border-radius:7px;text-align:center;
   font-family:var(--serif);font-size:17px;font-weight:700;color:var(--navy);background:#fff;
-  text-transform:uppercase;
+  text-transform:case;
 }
 .ans-box:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(192,138,46,.20);}
 
@@ -277,7 +264,7 @@ textarea.text-in{min-height:150px;resize:vertical;line-height:1.7;font-size:15.5
 .wf-text{flex:1;min-width:0;}
 .wf-root{
   flex:none;font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--plum);background:#f7edf5;border:1px solid #e6d3e1;
+  text-transform:case;color:var(--plum);background:#f7edf5;border:1px solid #e6d3e1;
   padding:5px 11px;border-radius:6px;white-space:nowrap;align-self:center;
 }
 .wf-in{
@@ -316,7 +303,7 @@ textarea.text-in{min-height:150px;resize:vertical;line-height:1.7;font-size:15.5
   background:linear-gradient(180deg,#fbfcfe,#f4f7fb);border:none;font:inherit;
   padding:15px 18px;font-weight:700;color:var(--navy);font-size:15.5px;transition:.16s;
 }
-.acc-btn:hover{background:#eef2f8;}
+.acc-btn:hover{background:#eeF1+f8;}
 .acc-btn .chev{
   margin-left:auto;flex:none;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;
   display:grid;place-items:center;font-size:12px;transition:transform .22s;
@@ -332,7 +319,7 @@ textarea.text-in{min-height:150px;resize:vertical;line-height:1.7;font-size:15.5
 .phrase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:14px;}
 .phrase-col h5{
   margin:0 0 9px;font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--teal);
+  text-transform:case;color:var(--teal);
 }
 .phrase-col ul{margin:0;padding-left:17px;}
 .phrase-col li{font-size:14.5px;color:var(--ink-2);margin-bottom:6px;}
@@ -346,7 +333,7 @@ textarea.text-in{min-height:150px;resize:vertical;line-height:1.7;font-size:15.5
 }
 .dcard:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
 .dcard .dc-n{
-  font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;
+  font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:case;color:var(--teal);margin-bottom:7px;
 }
 .dcard h4{font-size:16.5px;margin:0 0 8px;}
 .dcard p{font-size:14.5px;color:var(--ink-2);margin:0 0 10px;}
@@ -360,11 +347,11 @@ textarea.text-in{min-height:150px;resize:vertical;line-height:1.7;font-size:15.5
 }
 .chip:hover{border-color:var(--gold);background:#fdfaf3;color:var(--navy);}
 .chip.tealic{border-color:#b6e0da;background:var(--teal-soft);color:#155f59;}
-.chip.goldic{border-color:#f0dcb2;background:#fdf3e0;color:#8a5d13;}
+.chip.goldic{border-color:#f0dcB1+;background:#fdf3e0;color:#8a5d13;}
 
 table.coll{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px;}
 table.coll th,table.coll td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top;}
-table.coll th{background:var(--navy);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;}
+table.coll th{background:var(--navy);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:case;font-weight:800;}
 table.coll tr:nth-child(even) td{background:#fafbfd;}
 table.coll td.term{font-weight:700;color:var(--navy);white-space:nowrap;}
 table.coll td em{color:var(--muted);}
@@ -379,7 +366,7 @@ table.coll td em{color:var(--muted);}
   padding:17px 19px;box-shadow:var(--shadow-sm);
 }
 .timer .t-label{
-  font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;
+  font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:case;color:var(--muted);margin-bottom:4px;
 }
 .timer .t-role{font-size:14px;color:var(--ink-2);margin-bottom:11px;}
 .t-display{
@@ -413,7 +400,7 @@ table.coll td em{color:var(--muted);}
   padding:11px 15px;border-top:1px solid var(--line-2);font-size:13.5px;color:var(--ink-2);
   background:#fbfcfe;
 }
-.pic .cap b{color:var(--navy);display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;}
+.pic .cap b{color:var(--navy);display:block;font-size:12px;letter-spacing:.1em;text-transform:case;margin-bottom:2px;}
 
 /* ---------- 21. MIND MAP ---------- */
 .mindmap{
@@ -441,7 +428,7 @@ table.coll td em{color:var(--muted);}
 }
 .followup .fu-head{
   display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:800;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--teal);margin-bottom:10px;
+  text-transform:case;color:var(--teal);margin-bottom:10px;
 }
 .followup .fu-head .ic{
   width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:12px;
@@ -468,7 +455,7 @@ table.coll td em{color:var(--muted);}
   border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 17px;background:#fbfcfe;
 }
 .wc-num{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--navy);line-height:1;font-variant-numeric:tabular-nums;}
-.wc-label{font-size:11.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
+.wc-label{font-size:11.5px;font-weight:800;letter-spacing:.13em;text-transform:case;color:var(--muted);}
 .wc-status{
   font-size:13px;font-weight:700;padding:5px 12px;border-radius:20px;
   background:var(--bg-2);color:var(--ink-2);border:1px solid var(--line);
@@ -490,7 +477,7 @@ table.coll td em{color:var(--muted);}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 @media(max-width:760px){.two-col{grid-template-columns:1fr;}}
 .mini-h{
-  font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:case;
   color:var(--muted);margin:24px 0 10px;
 }
 footer.foot{
@@ -518,7 +505,7 @@ footer.foot b{color:#fff;}
 <!-- ============ STICKY NAVIGATION ============ -->
 <nav class="topbar">
   <div class="wrap">
-    <div class="brandmark"><span class="dot"></span> Unit 1 · B2 / FCE</div>
+    <div class="brandmark"><span class="dot"></span> Unit 1 · B1+ / FCE</div>
     <div class="navlinks">
       <a href="#lesson1">Lesson 1</a>
       <a href="#task1">Warm-up</a>
@@ -543,10 +530,10 @@ footer.foot b{color:#fff;}
     <h1>Personality, Core Values &amp; Family Background</h1>
     <p class="sub">Who becomes a good public servant — and how much of that is character, upbringing and the values we inherit?</p>
     <div class="meta-strip">
-      <div class="meta-chip"><b>Level</b>CEFR B2 (Upper-Intermediate)</div>
+      <div class="meta-chip"><b>Level</b>CEFR B1+ (Intermediate)</div>
       <div class="meta-chip"><b>Audience</b>1st-year BA, Public Administration</div>
       <div class="meta-chip"><b>Duration</b>2 × 90 min + homework</div>
-      <div class="meta-chip"><b>Exam focus</b>Cambridge B2 First (FCE)</div>
+      <div class="meta-chip"><b>Exam focus</b>Cambridge B1+ First (FCE)</div>
       <div class="meta-chip"><b>Skills</b>Reading · Speaking · Writing · UoE</div>
     </div>
   </div>
@@ -559,7 +546,7 @@ footer.foot b{color:#fff;}
   <div class="outcomes">
     <h3>By the end of this unit you will be able to…</h3>
     <ul>
-      <li>describe personality traits and leadership styles with precise B2 vocabulary;</li>
+      <li>describe personality traits and leadership styles with precise B1+ vocabulary;</li>
       <li>compare bureaucratic and charismatic models of public leadership;</li>
       <li>discuss how family background and upbringing shape professional integrity;</li>
       <li>use collocations for character, values and work–life balance accurately;</li>
@@ -567,7 +554,7 @@ footer.foot b{color:#fff;}
       <li>read an academic text and identify attitude, purpose and implication;</li>
       <li>compare two photographs and speculate for one uninterrupted minute;</li>
       <li>negotiate, agree and reach a decision in a collaborative exam task;</li>
-      <li>write a balanced B2 opinion essay of 140–190 words;</li>
+      <li>write a balanced B1+ opinion essay of 140–190 words;</li>
       <li>give and receive structured peer feedback on written work.</li>
     </ul>
   </div>
@@ -602,7 +589,7 @@ footer.foot b{color:#fff;}
         <p><strong>Step 3 (5 min).</strong> Report back to the class. Where did you and your partner disagree, and why?</p>
       </div>
 
-      <div class="mini-h">Trait bank — B2 vocabulary for character</div>
+      <div class="mini-h">Trait bank — B1+ vocabulary for character</div>
       <div class="chipbank">
         <span class="chip tealic">decisive</span>
         <span class="chip tealic">impartial</span>
@@ -1096,7 +1083,7 @@ footer.foot b{color:#fff;}
       </div>
 
       <div class="acc">
-        <button class="acc-btn" aria-expanded="false"><span class="ico">✦</span> Useful language — B2 adjectives of character (with dependent prepositions) <span class="chev">▾</span></button>
+        <button class="acc-btn" aria-expanded="false"><span class="ico">✦</span> Useful language — B1+ adjectives of character (with dependent prepositions) <span class="chev">▾</span></button>
         <div class="acc-panel">
           <div class="phrase-grid">
             <div class="phrase-col">
@@ -1203,9 +1190,9 @@ footer.foot b{color:#fff;}
             <!-- window -->
             <rect x="232" y="34" width="132" height="112" rx="4" fill="#bcd7ea" stroke="#8fa9bd" stroke-width="3"/>
             <rect x="246" y="96" width="20" height="50" fill="#9dbdd6"/>
-            <rect x="272" y="76" width="26" height="70" fill="#8fb2cd"/>
+            <rect x="272" y="76" width="26" height="70" fill="#8fB1+cd"/>
             <rect x="304" y="104" width="18" height="42" fill="#9dbdd6"/>
-            <rect x="328" y="86" width="24" height="60" fill="#8fb2cd"/>
+            <rect x="328" y="86" width="24" height="60" fill="#8fB1+cd"/>
             <line x1="298" y1="34" x2="298" y2="146" stroke="#8fa9bd" stroke-width="4"/>
             <!-- bookshelf -->
             <rect x="24" y="40" width="106" height="128" fill="#8a6a4a"/>
@@ -1224,7 +1211,7 @@ footer.foot b{color:#fff;}
             <rect x="300" y="176" width="3" height="46" fill="#5b5b5b"/>
             <path d="M303 178 h34 v22 h-34 z" fill="#f0f3f7"/>
             <path d="M303 186 h34 v7 h-34 z" fill="#2f5d7c"/>
-            <path d="M303 193 h34 v7 h-34 z" fill="#b23a3a"/>
+            <path d="M303 193 h34 v7 h-34 z" fill="#B1+3a3a"/>
             <!-- desk -->
             <rect x="46" y="214" width="306" height="12" rx="3" fill="#7a5a3c"/>
             <rect x="62" y="226" width="14" height="42" fill="#6a4c31"/>
@@ -1235,7 +1222,7 @@ footer.foot b{color:#fff;}
             <rect x="242" y="210" width="12" height="6" fill="#3c4658"/>
             <!-- papers + folders -->
             <rect x="86" y="200" width="52" height="14" fill="#e6dfd0" transform="rotate(-3 112 207)"/>
-            <rect x="92" y="196" width="52" height="14" fill="#f6f2e8" transform="rotate(2 118 203)"/>
+            <rect x="92" y="196" width="52" height="14" fill="#f6F1+e8" transform="rotate(2 118 203)"/>
             <rect x="150" y="198" width="42" height="16" rx="2" fill="#c08a2e"/>
             <!-- mug -->
             <ellipse cx="300" cy="212" rx="9" ry="4" fill="#ffffff"/>
@@ -1245,8 +1232,8 @@ footer.foot b{color:#fff;}
             <ellipse cx="176" cy="272" rx="42" ry="10" fill="#00000012"/>
             <path d="M148 214 q28 -34 56 0 z" fill="#2c3e5c"/>
             <rect x="150" y="176" width="52" height="42" rx="10" fill="#334a70"/>
-            <path d="M164 176 l12 22 l12 -22 z" fill="#f2f4f8"/>
-            <path d="M172 178 l4 20 l4 -20 z" fill="#b23a3a"/>
+            <path d="M164 176 l12 22 l12 -22 z" fill="#F1+f4f8"/>
+            <path d="M172 178 l4 20 l4 -20 z" fill="#B1+3a3a"/>
             <circle cx="176" cy="158" r="17" fill="#e8b98f"/>
             <path d="M159 154 q17 -20 34 0 q-6 -12 -17 -12 q-11 0 -17 12 z" fill="#4a3a2c"/>
             <rect x="140" y="188" width="18" height="24" rx="8" fill="#334a70" transform="rotate(18 149 200)"/>
@@ -1265,7 +1252,7 @@ footer.foot b{color:#fff;}
             <rect x="196" y="46" width="168" height="112" rx="4" fill="#fbfaf6" stroke="#5b6472" stroke-width="4"/>
             <rect x="206" y="58" width="70" height="52" fill="#cfe0ea"/>
             <path d="M206 92 l16 -12 l14 10 l18 -20 l22 16 v24 h-70 z" fill="#7fa8c4"/>
-            <path d="M206 96 q18 -16 34 -4 q16 12 30 -6" fill="none" stroke="#b23a3a" stroke-width="3"/>
+            <path d="M206 96 q18 -16 34 -4 q16 12 30 -6" fill="none" stroke="#B1+3a3a" stroke-width="3"/>
             <g fill="#5b6472"><rect x="288" y="58" width="64" height="6"/><rect x="288" y="72" width="52" height="6"/><rect x="288" y="86" width="58" height="6"/><rect x="288" y="100" width="40" height="6"/></g>
             <g fill="#c08a2e"><rect x="206" y="122" width="34" height="8"/><rect x="248" y="122" width="46" height="8"/><rect x="302" y="122" width="26" height="8"/></g>
             <g fill="#5b6472"><rect x="206" y="138" width="80" height="6"/><rect x="294" y="138" width="58" height="6"/></g>
@@ -1280,7 +1267,7 @@ footer.foot b{color:#fff;}
             <rect x="104" y="176" width="36" height="7" fill="#cfd6e2"/>
             <rect x="104" y="192" width="36" height="7" fill="#cfd6e2"/>
             <circle cx="122" cy="132" r="16" fill="#d9a072"/>
-            <path d="M106 128 q16 -19 32 0 q-5 -12 -16 -12 q-11 0 -16 12 z" fill="#2f2a26"/>
+            <path d="M106 128 q16 -19 32 0 q-5 -12 -16 -12 q-11 0 -16 12 z" fill="#2F1+a26"/>
             <rect x="88" y="158" width="16" height="34" rx="7" fill="#e9dc3f" transform="rotate(14 96 174)"/>
             <rect x="140" y="152" width="16" height="34" rx="7" fill="#e9dc3f" transform="rotate(-34 148 168)"/>
             <!-- clipboard -->
@@ -1298,7 +1285,7 @@ footer.foot b{color:#fff;}
             <g>
               <rect x="96" y="258" width="58" height="40" rx="10" fill="#8a6a76"/>
               <circle cx="125" cy="248" r="17" fill="#c98f63"/>
-              <path d="M108 250 q4 -24 17 -24 q13 0 17 24 q-6 -8 -17 -8 q-11 0 -17 8 z" fill="#3a2f28"/>
+              <path d="M108 250 q4 -24 17 -24 q13 0 17 24 q-6 -8 -17 -8 q-11 0 -17 8 z" fill="#3a2F1+8"/>
             </g>
             <g>
               <rect x="184" y="250" width="58" height="42" rx="10" fill="#4f7a6b"/>
@@ -1309,7 +1296,7 @@ footer.foot b{color:#fff;}
             <g>
               <rect x="272" y="258" width="58" height="40" rx="10" fill="#7c6f8c"/>
               <circle cx="301" cy="248" r="17" fill="#d29b6d"/>
-              <path d="M284 246 q17 -20 34 0 q-6 -13 -17 -13 q-11 0 -17 13 z" fill="#2f2a26"/>
+              <path d="M284 246 q17 -20 34 0 q-6 -13 -17 -13 q-11 0 -17 13 z" fill="#2F1+a26"/>
             </g>
             <g>
               <rect x="342" y="250" width="56" height="42" rx="10" fill="#5d6f8c"/>
@@ -1505,7 +1492,7 @@ footer.foot b{color:#fff;}
       <div class="mini-h">Observer's notes — no marks, only observations</div>
       <ul class="checklist">
         <li><input type="checkbox" id="ob1"><label for="ob1"><b>Range.</b> The speaker used vocabulary from this unit rather than repeating simple adjectives.</label></li>
-        <li><input type="checkbox" id="ob2"><label for="ob2"><b>Development.</b> Every opinion was followed by a reason or an example.</label></li>
+        <li><input type="checkbox" id="oB1+"><label for="oB1+"><b>Development.</b> Every opinion was followed by a reason or an example.</label></li>
         <li><input type="checkbox" id="ob3"><label for="ob3"><b>Comparison.</b> In Part 2 the two photographs were genuinely compared, not described separately.</label></li>
         <li><input type="checkbox" id="ob4"><label for="ob4"><b>Interaction.</b> In Part 3 the candidates invited each other to speak and responded to what was said.</label></li>
         <li><input type="checkbox" id="ob5"><label for="ob5"><b>Timing.</b> The speaker filled the full minute without long silences.</label></li>
@@ -1684,7 +1671,7 @@ footer.foot b{color:#fff;}
       </div>
 
       <div class="acc" style="margin-top:20px;">
-        <button class="acc-btn" aria-expanded="false"><span class="ico">✦</span> Useful language — structuring a B2 opinion essay <span class="chev">▾</span></button>
+        <button class="acc-btn" aria-expanded="false"><span class="ico">✦</span> Useful language — structuring a B1+ opinion essay <span class="chev">▾</span></button>
         <div class="acc-panel">
           <div class="phrase-grid">
             <div class="phrase-col">
@@ -1931,8 +1918,8 @@ footer.foot b{color:#fff;}
     </div>
     <div class="task-body">
       <ul class="checklist">
-        <li><input type="checkbox" id="rf1"><label for="rf1">I can describe personality and leadership styles using at least ten new B2 expressions.</label></li>
-        <li><input type="checkbox" id="rf2"><label for="rf2">I can speak for a full minute comparing two photographs without long pauses.</label></li>
+        <li><input type="checkbox" id="rf1"><label for="rf1">I can describe personality and leadership styles using at least ten new B1+ expressions.</label></li>
+        <li><input type="checkbox" id="rF1+"><label for="rF1+">I can speak for a full minute comparing two photographs without long pauses.</label></li>
         <li><input type="checkbox" id="rf3"><label for="rf3">I can discuss values with a partner, invite their opinion and reach a joint decision.</label></li>
         <li><input type="checkbox" id="rf4"><label for="rf4">I can form nouns, adjectives and negatives from a given root word.</label></li>
         <li><input type="checkbox" id="rf5"><label for="rf5">I can talk about past habits and regrets using <em>used to</em>, <em>would</em>, <em>wish</em> and <em>if only</em>.</label></li>
@@ -1948,7 +1935,7 @@ footer.foot b{color:#fff;}
 
 <footer class="foot">
   <div class="wrap">
-    <div><b>Unit 1 — Personality, Core Values &amp; Family Background</b><br>English for Public Administration · CEFR B2 · Cambridge B2 First (FCE) preparation</div>
+    <div><b>Unit 1 — Personality, Core Values &amp; Family Background</b><br>English for Public Administration · CEFR B1+ · Cambridge B1+ First (FCE) preparation</div>
     <div style="text-align:right;">Student's Book · Web Edition<br>Answer keys and teaching notes are published separately in the Teacher's Book.</div>
   </div>
 </footer>
