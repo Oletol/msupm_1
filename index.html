@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 — Personality, Values &amp; Public Service | B2 / FCE</title>
+<style>
+/* ============================================================
+   UNIT 1 — PERSONALITY, CORE VALUES & FAMILY BACKGROUND
+   English for Public Administration · CEFR B2 · Cambridge FCE
+   Student's Book — Web Edition
+   ------------------------------------------------------------
+   NOTE FOR DEVELOPERS / TEACHERS:
+   This file contains NO answer keys and NO grading logic.
+   All JavaScript is purely for the user interface:
+   timers, word counter, accordions, tabs, progress bar,
+   local draft saving and printing.
+   ============================================================ */
+
+/* ---------- 1. DESIGN TOKENS ---------- */
+:root{
+  --navy:#16233f;
+  --navy-2:#1f3157;
+  --navy-soft:#2c4374;
+  --gold:#c08a2e;
+  --gold-soft:#e8c977;
+  --teal:#1f7a72;
+  --teal-soft:#d8efec;
+  --plum:#7b3f6b;
+  --ink:#1c2230;
+  --ink-2:#3f4859;
+  --muted:#6b7488;
+  --line:#dfe3ea;
+  --line-2:#eef1f6;
+  --paper:#ffffff;
+  --bg:#f4f6f9;
+  --bg-2:#eef1f6;
+  --ok:#2f7d54;
+  --warn:#b9481f;
+  --radius:14px;
+  --radius-sm:9px;
+  --shadow:0 1px 2px rgba(22,35,63,.06), 0 8px 24px rgba(22,35,63,.07);
+  --shadow-sm:0 1px 2px rgba(22,35,63,.07), 0 3px 10px rgba(22,35,63,.05);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono",SFMono-Regular,ui-monospace,Menlo,Consolas,monospace;
+}
+
+/* ---------- 2. RESET & BASE ---------- */
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:96px;}
+body{
+  margin:0;
+  font-family:var(--sans);
+  font-size:16.5px;
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--serif);line-height:1.25;margin:0 0 .5em;color:var(--navy);}
+p{margin:0 0 1em;}
+a{color:var(--teal);}
+::selection{background:var(--gold-soft);color:var(--navy);}
+
+/* ---------- 3. LAYOUT ---------- */
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
+main{padding-bottom:80px;}
+section.block{margin:0 0 34px;}
+
+/* ---------- 4. PROGRESS BAR + STICKY NAV ---------- */
+#progress-track{
+  position:fixed;top:0;left:0;right:0;height:4px;background:rgba(255,255,255,.18);z-index:60;
+}
+#progress-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--gold-soft));
+  transition:width .12s linear;
+}
+nav.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(22,35,63,.97);
+  backdrop-filter:saturate(160%) blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+nav.topbar .wrap{display:flex;align-items:center;gap:14px;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px;}
+.brandmark{
+  display:flex;align-items:center;gap:9px;color:#fff;font-family:var(--serif);
+  font-size:15px;letter-spacing:.02em;white-space:nowrap;
+}
+.brandmark .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);flex:none;}
+.navlinks{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto;}
+.navlinks a{
+  color:rgba(255,255,255,.78);text-decoration:none;font-size:13px;font-weight:600;
+  padding:6px 11px;border-radius:20px;border:1px solid transparent;transition:.16s;white-space:nowrap;
+}
+.navlinks a:hover{color:#fff;background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.18);}
+.btn-print{
+  background:var(--gold);color:var(--navy);border:none;font:inherit;font-size:13px;font-weight:700;
+  padding:7px 14px;border-radius:20px;cursor:pointer;transition:.16s;white-space:nowrap;
+}
+.btn-print:hover{background:var(--gold-soft);}
+
+/* ---------- 5. HERO ---------- */
+header.hero{
+  background:
+    radial-gradient(900px 380px at 88% -10%, rgba(192,138,46,.28), transparent 62%),
+    radial-gradient(700px 340px at 6% 110%, rgba(31,122,114,.28), transparent 60%),
+    linear-gradient(160deg,var(--navy) 0%, var(--navy-2) 58%, #24345c 100%);
+  color:#fff;padding:52px 0 46px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:100% 34px;opacity:.35;pointer-events:none;
+}
+.hero .eyebrow{
+  display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-soft);border:1px solid rgba(232,201,119,.45);padding:5px 13px;border-radius:20px;margin-bottom:18px;
+}
+.hero h1{color:#fff;font-size:clamp(30px,5.2vw,47px);margin-bottom:10px;letter-spacing:-.015em;}
+.hero .sub{font-size:clamp(16px,2.3vw,20px);color:rgba(255,255,255,.86);max-width:730px;font-family:var(--serif);font-style:italic;}
+.meta-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;position:relative;z-index:1;}
+.meta-chip{
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.20);
+  border-radius:10px;padding:9px 14px;font-size:13px;color:rgba(255,255,255,.94);
+}
+.meta-chip b{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);font-weight:800;margin-bottom:2px;}
+
+/* ---------- 6. OUTCOMES BOX ---------- */
+.outcomes{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-sm);margin-top:-26px;position:relative;z-index:2;
+}
+.outcomes h3{font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:9px;}
+.outcomes ul{margin:0;padding-left:20px;columns:2;column-gap:34px;}
+.outcomes li{margin-bottom:7px;font-size:14.5px;color:var(--ink-2);break-inside:avoid;}
+@media(max-width:720px){.outcomes ul{columns:1;}}
+
+/* ---------- 7. LESSON DIVIDERS ---------- */
+.lesson-divider{
+  margin:52px 0 30px;padding:26px 28px;border-radius:var(--radius);
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-soft) 100%);
+  color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.lesson-divider::before{
+  content:"";position:absolute;right:-40px;top:-40px;width:190px;height:190px;border-radius:50%;
+  background:rgba(192,138,46,.20);
+}
+.lesson-divider .tag{
+  font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);
+}
+.lesson-divider h2{color:#fff;font-size:clamp(22px,3.6vw,31px);margin:6px 0 8px;position:relative;}
+.lesson-divider p{margin:0;color:rgba(255,255,255,.84);font-size:15px;max-width:640px;position:relative;}
+
+/* ---------- 8. TASK CARDS ---------- */
+.task{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:26px;
+}
+.task-head{
+  display:flex;align-items:flex-start;gap:15px;padding:20px 24px;
+  border-bottom:1px solid var(--line-2);background:linear-gradient(180deg,#fbfcfe,#f6f8fb);
+}
+.tnum{
+  flex:none;width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+  background:var(--navy);color:var(--gold-soft);font-family:var(--serif);font-size:19px;font-weight:700;
+}
+.task-head .t-titles{flex:1;min-width:0;}
+.task-head h3{margin:0 0 3px;font-size:20px;letter-spacing:-.01em;}
+.task-head .t-sub{font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.02em;}
+.badges{display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+.badge{
+  font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 10px;border-radius:20px;white-space:nowrap;
+}
+.b-time{background:var(--bg-2);color:var(--ink-2);border:1px solid var(--line);}
+.b-fce{background:#fdf3e0;color:#8a5d13;border:1px solid #f0dcb2;}
+.b-skill{background:var(--teal-soft);color:#155f59;border:1px solid #b6e0da;}
+.b-hw{background:#f3e8f1;color:#6b3a5e;border:1px solid #e4cfe0;}
+.task-body{padding:24px;}
+
+/* ---------- 9. INSTRUCTIONS / RUBRIC ---------- */
+.rubric{
+  border-left:3px solid var(--gold);background:#fdfaf3;
+  padding:13px 17px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:20px;
+}
+.rubric p{margin:0;font-size:15px;color:var(--ink-2);}
+.rubric p + p{margin-top:8px;}
+.rubric strong{color:var(--navy);}
+
+/* ---------- 10. EXAM TEXT ---------- */
+.exam-text{
+  font-family:var(--serif);font-size:17.5px;line-height:1.85;color:#242c3c;
+  background:#fdfdfb;border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:26px 30px;margin-bottom:22px;
+}
+.exam-text h4{font-size:20px;margin:0 0 14px;text-align:center;letter-spacing:.01em;}
+.exam-text h4.lead{border-bottom:1px solid var(--line);padding-bottom:12px;}
+.exam-text p{margin:0 0 1.05em;}
+.exam-text p:last-child{margin-bottom:0;}
+.gap-num{
+  display:inline-block;min-width:26px;text-align:center;background:var(--navy);color:#fff;
+  font-family:var(--sans);font-size:12px;font-weight:800;border-radius:5px;padding:1px 5px;
+  vertical-align:2px;margin:0 2px;
+}
+.gap-line{
+  display:inline-block;min-width:104px;border-bottom:2px dotted var(--navy-soft);
+  vertical-align:-3px;margin:0 3px;
+}
+.para-letter{
+  display:inline-block;background:var(--teal);color:#fff;font-family:var(--sans);font-weight:800;
+  font-size:13px;width:24px;height:24px;line-height:24px;text-align:center;border-radius:6px;margin-right:9px;
+  vertical-align:2px;
+}
+
+/* ---------- 11. OPTIONS (MULTIPLE CHOICE) ---------- */
+.options{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:9px 16px;
+  margin:0 0 20px;padding:0;list-style:none;
+}
+.opt-group{
+  border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 15px;background:#fcfdff;
+}
+.opt-group .og-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;
+  padding-bottom:8px;border-bottom:1px dashed var(--line);
+}
+.opt-group .og-num{font-weight:800;font-size:13.5px;color:var(--navy);letter-spacing:.04em;}
+.opt-group ol{list-style:none;margin:0;padding:0;display:grid;gap:4px;}
+.opt-group li{font-size:14.5px;color:var(--ink-2);display:flex;gap:8px;}
+.opt-group li span.l{font-weight:800;color:var(--teal);flex:none;width:16px;}
+.ans-box{
+  width:52px;height:34px;border:2px solid var(--navy-soft);border-radius:7px;text-align:center;
+  font-family:var(--serif);font-size:17px;font-weight:700;color:var(--navy);background:#fff;
+  text-transform:uppercase;
+}
+.ans-box:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(192,138,46,.20);}
+
+/* ---------- 12. QUESTION LISTS (READING) ---------- */
+.qlist{list-style:none;counter-reset:q;margin:0;padding:0;display:grid;gap:16px;}
+.qlist > li{
+  border:1px solid var(--line);border-radius:var(--radius-sm);padding:17px 19px;background:#fcfdff;
+}
+.qstem{font-weight:700;color:var(--navy);margin-bottom:11px;font-size:15.5px;display:flex;gap:10px;}
+.qstem .qn{
+  flex:none;background:var(--navy);color:#fff;font-size:12px;font-weight:800;border-radius:5px;
+  padding:2px 7px;height:22px;line-height:18px;
+}
+.qopts{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+.qopts li{display:flex;gap:10px;font-size:15px;color:var(--ink-2);align-items:flex-start;}
+.qopts li label{display:flex;gap:10px;cursor:pointer;align-items:flex-start;}
+.qopts input[type=radio]{margin-top:6px;accent-color:var(--teal);width:16px;height:16px;flex:none;}
+.qopts .l{font-weight:800;color:var(--teal);flex:none;}
+
+/* ---------- 13. INPUTS ---------- */
+.text-in{
+  font-family:var(--sans);font-size:15px;color:var(--ink);
+  border:1px solid var(--line);border-radius:8px;padding:9px 12px;background:#fff;width:100%;
+  transition:.15s;
+}
+.text-in:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(31,122,114,.14);}
+.inline-in{
+  display:inline-block;width:170px;font-family:var(--serif);font-size:16px;padding:4px 10px;
+  border:none;border-bottom:2px solid var(--navy-soft);border-radius:0;background:#fbfcfe;
+  color:var(--navy);font-weight:600;
+}
+.inline-in:focus{outline:none;border-bottom-color:var(--gold);background:#fffaf0;box-shadow:none;}
+textarea.text-in{min-height:150px;resize:vertical;line-height:1.7;font-size:15.5px;}
+
+/* ---------- 14. WORD-FORMATION ROWS ---------- */
+.wf-line{
+  display:flex;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-family:var(--serif);font-size:17px;line-height:1.8;
+}
+.wf-line:last-child{border-bottom:none;}
+.wf-text{flex:1;min-width:0;}
+.wf-root{
+  flex:none;font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--plum);background:#f7edf5;border:1px solid #e6d3e1;
+  padding:5px 11px;border-radius:6px;white-space:nowrap;align-self:center;
+}
+.wf-in{
+  display:inline-block;width:180px;font-family:var(--serif);font-size:16.5px;padding:3px 9px;
+  border:none;border-bottom:2px solid var(--navy-soft);background:#fbfcfe;color:var(--navy);font-weight:600;
+}
+.wf-in:focus{outline:none;border-bottom-color:var(--gold);background:#fffaf0;}
+
+/* ---------- 15. KEY WORD TRANSFORMATION ---------- */
+.kwt{display:grid;gap:18px;list-style:none;margin:0;padding:0;counter-reset:kwt;}
+.kwt > li{
+  border:1px solid var(--line);border-radius:var(--radius-sm);padding:18px 20px;background:#fcfdff;
+  position:relative;
+}
+.kwt-n{
+  position:absolute;top:-11px;left:18px;background:var(--navy);color:#fff;font-size:11.5px;font-weight:800;
+  padding:3px 10px;border-radius:20px;letter-spacing:.08em;
+}
+.kwt-orig{font-family:var(--serif);font-size:17px;color:var(--ink);margin:4px 0 12px;}
+.kwt-key{
+  display:inline-block;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.16em;
+  background:var(--navy);color:var(--gold-soft);padding:5px 14px;border-radius:6px;margin-bottom:12px;
+}
+.kwt-second{font-family:var(--serif);font-size:17px;color:var(--ink);line-height:2.1;}
+.kwt-in{
+  display:inline-block;width:min(330px,80%);font-family:var(--serif);font-size:16.5px;padding:3px 10px;
+  border:none;border-bottom:2px solid var(--navy-soft);background:#fbfcfe;color:var(--navy);font-weight:600;
+}
+.kwt-in:focus{outline:none;border-bottom-color:var(--gold);background:#fffaf0;}
+
+/* ---------- 16. ACCORDION (USEFUL LANGUAGE) ---------- */
+.acc{border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;margin:20px 0;background:#fff;}
+.acc + .acc{margin-top:12px;}
+.acc-btn{
+  width:100%;display:flex;align-items:center;gap:12px;text-align:left;cursor:pointer;
+  background:linear-gradient(180deg,#fbfcfe,#f4f7fb);border:none;font:inherit;
+  padding:15px 18px;font-weight:700;color:var(--navy);font-size:15.5px;transition:.16s;
+}
+.acc-btn:hover{background:#eef2f8;}
+.acc-btn .chev{
+  margin-left:auto;flex:none;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;
+  display:grid;place-items:center;font-size:12px;transition:transform .22s;
+}
+.acc-btn[aria-expanded="true"] .chev{transform:rotate(180deg);}
+.acc-btn .ico{
+  flex:none;width:26px;height:26px;border-radius:7px;background:var(--teal-soft);color:var(--teal);
+  display:grid;place-items:center;font-size:14px;font-weight:800;
+}
+.acc-panel{display:none;padding:6px 18px 20px;border-top:1px solid var(--line-2);}
+.acc-panel.open{display:block;animation:fade .22s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(-5px);}to{opacity:1;transform:none;}}
+.phrase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:14px;}
+.phrase-col h5{
+  margin:0 0 9px;font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--teal);
+}
+.phrase-col ul{margin:0;padding-left:17px;}
+.phrase-col li{font-size:14.5px;color:var(--ink-2);margin-bottom:6px;}
+.phrase-col li em{color:var(--muted);font-size:13.5px;}
+
+/* ---------- 17. DISCUSSION CARDS ---------- */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:18px 0;}
+.dcard{
+  border:1px solid var(--line);border-radius:var(--radius-sm);padding:18px;background:#fff;
+  box-shadow:var(--shadow-sm);position:relative;transition:.18s;border-top:3px solid var(--teal);
+}
+.dcard:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+.dcard .dc-n{
+  font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;
+}
+.dcard h4{font-size:16.5px;margin:0 0 8px;}
+.dcard p{font-size:14.5px;color:var(--ink-2);margin:0 0 10px;}
+.dcard .dc-q{font-size:14px;color:var(--navy);font-style:italic;border-top:1px dashed var(--line);padding-top:9px;margin:0;}
+
+/* ---------- 18. TRAIT / COLLOCATION BANK ---------- */
+.chipbank{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px;}
+.chip{
+  font-size:14px;font-weight:600;padding:7px 14px;border-radius:20px;background:#fff;
+  border:1px solid var(--line);color:var(--ink-2);cursor:default;transition:.15s;
+}
+.chip:hover{border-color:var(--gold);background:#fdfaf3;color:var(--navy);}
+.chip.tealic{border-color:#b6e0da;background:var(--teal-soft);color:#155f59;}
+.chip.goldic{border-color:#f0dcb2;background:#fdf3e0;color:#8a5d13;}
+
+table.coll{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px;}
+table.coll th,table.coll td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top;}
+table.coll th{background:var(--navy);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;}
+table.coll tr:nth-child(even) td{background:#fafbfd;}
+table.coll td.term{font-weight:700;color:var(--navy);white-space:nowrap;}
+table.coll td em{color:var(--muted);}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+
+/* ---------- 19. TIMERS ---------- */
+.timer-bar{
+  display:flex;flex-wrap:wrap;gap:14px;margin:20px 0;
+}
+.timer{
+  flex:1 1 230px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fff;
+  padding:17px 19px;box-shadow:var(--shadow-sm);
+}
+.timer .t-label{
+  font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;
+}
+.timer .t-role{font-size:14px;color:var(--ink-2);margin-bottom:11px;}
+.t-display{
+  font-family:var(--mono);font-size:40px;font-weight:700;color:var(--navy);letter-spacing:.02em;
+  line-height:1;margin-bottom:12px;font-variant-numeric:tabular-nums;
+}
+.t-display.running{color:var(--teal);}
+.t-display.done{color:var(--warn);animation:pulse 1s ease infinite;}
+@keyframes pulse{50%{opacity:.45;}}
+.t-track{height:6px;background:var(--bg-2);border-radius:6px;overflow:hidden;margin-bottom:13px;}
+.t-fill{height:100%;width:100%;background:linear-gradient(90deg,var(--teal),#3aa79d);transition:width .3s linear;}
+.t-fill.low{background:linear-gradient(90deg,#c9761f,#e0a04a);}
+.t-btns{display:flex;gap:8px;}
+.t-btn{
+  font:inherit;font-size:13px;font-weight:700;padding:8px 15px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--navy);background:var(--navy);color:#fff;transition:.15s;
+}
+.t-btn:hover{background:var(--navy-soft);}
+.t-btn.ghost{background:#fff;color:var(--navy);}
+.t-btn.ghost:hover{background:var(--bg-2);}
+
+/* ---------- 20. PICTURES (SPEAKING PART 2) ---------- */
+.pic-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:20px 0;}
+@media(max-width:700px){.pic-pair{grid-template-columns:1fr;}}
+.pic{
+  border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.pic svg{display:block;width:100%;height:auto;}
+.pic .cap{
+  padding:11px 15px;border-top:1px solid var(--line-2);font-size:13.5px;color:var(--ink-2);
+  background:#fbfcfe;
+}
+.pic .cap b{color:var(--navy);display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;}
+
+/* ---------- 21. MIND MAP ---------- */
+.mindmap{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;
+  margin:20px 0;align-items:stretch;
+}
+.mm-centre{
+  grid-column:1/-1;background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:#fff;
+  border-radius:var(--radius-sm);padding:18px;text-align:center;box-shadow:var(--shadow-sm);
+}
+.mm-centre h4{color:#fff;margin:0 0 4px;font-size:19px;}
+.mm-centre p{margin:0;font-size:14px;color:rgba(255,255,255,.85);}
+.mm-node{
+  border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:var(--radius-sm);
+  background:#fff;padding:15px;text-align:center;box-shadow:var(--shadow-sm);transition:.18s;
+}
+.mm-node:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.mm-node h5{margin:0 0 6px;font-family:var(--serif);font-size:16.5px;color:var(--navy);}
+.mm-node p{margin:0;font-size:13px;color:var(--muted);}
+
+/* ---------- 22. FOLLOW-UP DISCUSSION BLOCK ---------- */
+.followup{
+  margin-top:24px;border:1px solid #d6e7e5;background:linear-gradient(180deg,#f4fbfa,#eaf6f4);
+  border-radius:var(--radius-sm);padding:18px 20px;border-left:4px solid var(--teal);
+}
+.followup .fu-head{
+  display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:800;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:10px;
+}
+.followup .fu-head .ic{
+  width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:12px;
+}
+.followup ol{margin:0;padding-left:20px;}
+.followup li{font-size:15px;color:var(--ink-2);margin-bottom:7px;}
+.followup li:last-child{margin-bottom:0;}
+.followup .fu-note{margin:11px 0 0;font-size:13.5px;color:var(--muted);font-style:italic;}
+
+/* ---------- 23. CHECKLIST ---------- */
+.checklist{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:9px;}
+.checklist li{
+  display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:9px;
+  padding:12px 14px;background:#fff;transition:.15s;
+}
+.checklist li:hover{border-color:#c8d2e2;}
+.checklist input[type=checkbox]{width:19px;height:19px;margin-top:2px;accent-color:var(--teal);flex:none;cursor:pointer;}
+.checklist label{font-size:14.5px;color:var(--ink-2);cursor:pointer;}
+.checklist label b{color:var(--navy);}
+
+/* ---------- 24. WORD COUNTER ---------- */
+.counter-bar{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:12px;
+  border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 17px;background:#fbfcfe;
+}
+.wc-num{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--navy);line-height:1;font-variant-numeric:tabular-nums;}
+.wc-label{font-size:11.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
+.wc-status{
+  font-size:13px;font-weight:700;padding:5px 12px;border-radius:20px;
+  background:var(--bg-2);color:var(--ink-2);border:1px solid var(--line);
+}
+.wc-status.good{background:#e6f4ec;color:var(--ok);border-color:#bfe2cd;}
+.wc-status.over{background:#fdeee7;color:var(--warn);border-color:#f4d3c3;}
+.wc-track{flex:1 1 160px;height:7px;background:var(--bg-2);border-radius:7px;overflow:hidden;min-width:120px;}
+.wc-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--navy-soft),var(--teal));transition:width .2s;}
+.wc-fill.good{background:linear-gradient(90deg,var(--ok),#4aa273);}
+.wc-fill.over{background:linear-gradient(90deg,var(--warn),#dd7c4e);}
+.save-note{font-size:12.5px;color:var(--muted);margin-top:8px;}
+
+/* ---------- 25. MISC ---------- */
+.note{
+  font-size:14px;color:var(--ink-2);background:var(--bg-2);border-radius:9px;padding:13px 16px;margin:16px 0;
+}
+.note b{color:var(--navy);}
+.hr-soft{border:none;border-top:1px solid var(--line);margin:26px 0;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:760px){.two-col{grid-template-columns:1fr;}}
+.mini-h{
+  font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:24px 0 10px;
+}
+footer.foot{
+  background:var(--navy);color:rgba(255,255,255,.72);padding:34px 0;font-size:13.5px;
+}
+footer.foot .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;}
+footer.foot b{color:#fff;}
+
+/* ---------- 26. PRINT ---------- */
+@media print{
+  body{background:#fff;font-size:11pt;}
+  nav.topbar,#progress-track,.btn-print,.t-btns{display:none !important;}
+  header.hero{background:#16233f !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .task,.acc,.dcard,.timer{box-shadow:none;break-inside:avoid;}
+  .acc-panel{display:block !important;}
+  .lesson-divider{break-before:page;}
+  a{text-decoration:none;color:inherit;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-track"><div id="progress-fill"></div></div>
+
+<!-- ============ STICKY NAVIGATION ============ -->
+<nav class="topbar">
+  <div class="wrap">
+    <div class="brandmark"><span class="dot"></span> Unit 1 · B2 / FCE</div>
+    <div class="navlinks">
+      <a href="#lesson1">Lesson 1</a>
+      <a href="#task1">Warm-up</a>
+      <a href="#task2">UoE 1</a>
+      <a href="#task3">Reading</a>
+      <a href="#task4">UoE 3</a>
+      <a href="#lesson2">Lesson 2</a>
+      <a href="#task5">Vocabulary</a>
+      <a href="#task6">Speaking</a>
+      <a href="#task7">UoE 4</a>
+      <a href="#task8">Writing</a>
+      <a href="#homework">Homework</a>
+    </div>
+    <button class="btn-print" onclick="window.print()">Print / PDF</button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">English for Public Administration · Unit 1</span>
+    <h1>Personality, Core Values &amp; Family Background</h1>
+    <p class="sub">Who becomes a good public servant — and how much of that is character, upbringing and the values we inherit?</p>
+    <div class="meta-strip">
+      <div class="meta-chip"><b>Level</b>CEFR B2 (Upper-Intermediate)</div>
+      <div class="meta-chip"><b>Audience</b>1st-year BA, Public Administration</div>
+      <div class="meta-chip"><b>Duration</b>2 × 90 min + homework</div>
+      <div class="meta-chip"><b>Exam focus</b>Cambridge B2 First (FCE)</div>
+      <div class="meta-chip"><b>Skills</b>Reading · Speaking · Writing · UoE</div>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <!-- ============ LEARNING OUTCOMES ============ -->
+  <div class="outcomes">
+    <h3>By the end of this unit you will be able to…</h3>
+    <ul>
+      <li>describe personality traits and leadership styles with precise B2 vocabulary;</li>
+      <li>compare bureaucratic and charismatic models of public leadership;</li>
+      <li>discuss how family background and upbringing shape professional integrity;</li>
+      <li>use collocations for character, values and work–life balance accurately;</li>
+      <li>handle FCE Use of English Parts 1–4 under timed conditions;</li>
+      <li>read an academic text and identify attitude, purpose and implication;</li>
+      <li>compare two photographs and speculate for one uninterrupted minute;</li>
+      <li>negotiate, agree and reach a decision in a collaborative exam task;</li>
+      <li>write a balanced B2 opinion essay of 140–190 words;</li>
+      <li>give and receive structured peer feedback on written work.</li>
+    </ul>
+  </div>
+
+  <!-- ================================================================
+       LESSON 1
+       ================================================================ -->
+  <div class="lesson-divider" id="lesson1">
+    <div class="tag">Lesson 1 · 90 minutes</div>
+    <h2>Personality &amp; Leadership in Public Service</h2>
+    <p>From the profile of an effective administrator to the language of character: warm-up discussion, multiple-choice cloze, an academic reading on emotional intelligence, and word formation on ethical conduct.</p>
+  </div>
+
+  <!-- ---------- TASK 1: WARM-UP ---------- -->
+  <section class="task block" id="task1">
+    <div class="task-head">
+      <div class="tnum">1</div>
+      <div class="t-titles">
+        <h3>Warm-up: The Profile of a Leader</h3>
+        <div class="t-sub">Speaking · pairs, then open class</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-time">15 min</span>
+        <span class="badge b-skill">Speaking</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="rubric">
+        <p><strong>Step 1 (3 min).</strong> Look at the trait bank below. Individually, choose the <strong>four</strong> qualities you consider essential in a senior public administrator, and <strong>one</strong> which you think is overrated.</p>
+        <p><strong>Step 2 (7 min).</strong> Work in pairs. Take one discussion card at a time and talk about it for roughly ninety seconds. Justify every opinion with a reason or an example — do not simply list adjectives.</p>
+        <p><strong>Step 3 (5 min).</strong> Report back to the class. Where did you and your partner disagree, and why?</p>
+      </div>
+
+      <div class="mini-h">Trait bank — B2 vocabulary for character</div>
+      <div class="chipbank">
+        <span class="chip tealic">decisive</span>
+        <span class="chip tealic">impartial</span>
+        <span class="chip tealic">conscientious</span>
+        <span class="chip tealic">approachable</span>
+        <span class="chip tealic">level-headed</span>
+        <span class="chip tealic">resilient</span>
+        <span class="chip tealic">principled</span>
+        <span class="chip tealic">diplomatic</span>
+        <span class="chip goldic">charismatic</span>
+        <span class="chip goldic">meticulous</span>
+        <span class="chip goldic">thick-skinned</span>
+        <span class="chip goldic">self-effacing</span>
+        <span class="chip goldic">visionary</span>
+        <span class="chip goldic">pragmatic</span>
+        <span class="chip">inflexible</span>
+        <span class="chip">indecisive</span>
+        <span class="chip">arrogant</span>
+        <span class="chip">over-cautious</span>
+      </div>
+
+      <div class="card-grid">
+        <div class="dcard">
+          <div class="dc-n">Card 1</div>
+          <h4>Born or made?</h4>
+          <p>Some people argue that leadership in the public sector is a talent you are born with; others believe it is a set of skills that can be taught in a lecture hall.</p>
+          <p class="dc-q">Which position do you find more convincing, and what does your answer imply about the way we select senior officials?</p>
+        </div>
+        <div class="dcard">
+          <div class="dc-n">Card 2</div>
+          <h4>Popularity vs. integrity</h4>
+          <p>A regional governor is extremely popular but frequently ignores procedure. Her deputy follows every rule but is widely considered cold and remote.</p>
+          <p class="dc-q">Which of the two would you rather work for — and which of the two would you rather be governed by?</p>
+        </div>
+        <div class="dcard">
+          <div class="dc-n">Card 3</div>
+          <h4>The cost of ambition</h4>
+          <p>Ambition drives careers forward, yet in public office it can also lead officials to promise more than the budget allows.</p>
+          <p class="dc-q">Where exactly is the line between healthy ambition and dangerous self-interest in public administration?</p>
+        </div>
+        <div class="dcard">
+          <div class="dc-n">Card 4</div>
+          <h4>Emotion at the desk</h4>
+          <p>Civil servants are often expected to remain neutral and unemotional when dealing with distressed citizens.</p>
+          <p class="dc-q">Is emotional detachment a professional strength or a hidden weakness? Can an official be too calm?</p>
+        </div>
+        <div class="dcard">
+          <div class="dc-n">Card 5</div>
+          <h4>The quiet administrator</h4>
+          <p>Not every effective official is a public speaker. Many of the most influential figures in government work almost invisibly.</p>
+          <p class="dc-q">Why does the public tend to reward visible confidence rather than quiet competence?</p>
+        </div>
+        <div class="dcard">
+          <div class="dc-n">Card 6</div>
+          <h4>Under pressure</h4>
+          <p>During a flood, a road closure or a public health emergency, officials must make irreversible decisions with incomplete information.</p>
+          <p class="dc-q">Which single personal quality matters most in a crisis, and why do you rank it above the others?</p>
+        </div>
+      </div>
+
+      <div class="mini-h">Your notes</div>
+      <textarea class="text-in js-save" data-key="u1-warmup" rows="4" placeholder="Four essential qualities / one overrated quality — and your reasons…"></textarea>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion</div>
+        <ol>
+          <li>Look back at the adjectives your class selected most often. Do they describe a <em>leader</em> or an <em>administrator</em>? Is there a meaningful difference between the two?</li>
+          <li>To what extent are the qualities you chose culturally specific? Would students in another country produce the same list?</li>
+          <li>Several traits in the bank are positive in one context and negative in another (for example, <em>decisive</em> and <em>inflexible</em>). Find two more pairs and explain how context changes their value.</li>
+        </ol>
+        <p class="fu-note">Aim to use at least four items from the trait bank in your answers.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ---------- TASK 2: FCE USE OF ENGLISH PART 1 ---------- -->
+  <section class="task block" id="task2">
+    <div class="task-head">
+      <div class="tnum">2</div>
+      <div class="t-titles">
+        <h3>Use of English — Part 1: Multiple-choice Cloze</h3>
+        <div class="t-sub">Lexical precision · collocation · fixed phrases</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-time">20 min</span>
+        <span class="badge b-fce">FCE Part 1</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="rubric">
+        <p><strong>Instructions.</strong> For questions <strong>1–8</strong>, read the text below and decide which answer (<strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong>) best fits each gap. There is an example at the beginning <strong>(0)</strong>.</p>
+        <p>Write <strong>one letter only</strong> in each answer box. Read the whole text first: the words before and after the gap normally decide the answer.</p>
+      </div>
+
+      <div class="exam-text">
+        <h4 class="lead">Two Traditions of Public Leadership</h4>
+        <p>For more than a century, scholars of public administration have <span class="gap-num">0</span> <em>drawn</em> a distinction between two contrasting models of leadership. The first, usually described as bureaucratic, <span class="gap-num">1</span><span class="gap-line"></span> emphasis on rules, written procedures and the impersonal authority of the office rather than of the individual who happens to occupy it. Officials working in this tradition are expected to be methodical, impartial and, above all, predictable. Critics argue that such organisations eventually become rigid, and that capable staff gradually lose the <span class="gap-num">2</span><span class="gap-line"></span> to take the initiative.</p>
+        <p>The second model is commonly called charismatic. Here, authority <span class="gap-num">3</span><span class="gap-line"></span> from the personal qualities of the leader — vision, energy and the ability to persuade. A charismatic mayor may <span class="gap-num">4</span><span class="gap-line"></span> new life into a demoralised city council within a matter of months, and citizens frequently respond to such figures with a level of enthusiasm that no procedure could ever produce.</p>
+        <p>Yet this style carries obvious risks. When an entire institution <span class="gap-num">5</span><span class="gap-line"></span> on one exceptional individual, it rarely develops the capacity to function without them. Historians of local government can <span class="gap-num">6</span><span class="gap-line"></span> to dozens of towns that flourished under a remarkable leader and then declined sharply the moment that leader retired.</p>
+        <p>Recent research suggests that the most effective administrators do not <span class="gap-num">7</span><span class="gap-line"></span> neatly into either category. They combine procedural discipline with genuine emotional awareness, and they are <span class="gap-num">8</span><span class="gap-line"></span> of adjusting their behaviour to the demands of the situation rather than repeating a single style in every context.</p>
+      </div>
+
+      <div class="options">
+        <div class="opt-group">
+          <div class="og-head"><span class="og-num">1</span><input class="ans-box js-save" data-key="u1-p1-1" maxlength="1" aria-label="Answer for gap 1"></div>
+          <ol>
+            <li><span class="l">A</span> places</li>
+            <li><span class="l">B</span> holds</li>
+            <li><span class="l">C</span> takes</li>
+            <li><span class="l">D</span> keeps</li>
+          </ol>
+        </div>
+        <div class="opt-group">
+          <div class="og-head"><span class="og-num">2</span><input class="ans-box js-save" data-key="u1-p1-2" maxlength="1" aria-label="Answer for gap 2"></div>
+          <ol>
+            <li><span class="l">A</span> intention</li>
+            <li><span class="l">B</span> motivation</li>
+            <li><span class="l">C</span> purpose</li>
+            <li><span class="l">D</span> attention</li>
+          </ol>
+        </div>
+        <div class="opt-group">
+          <div class="og-head"><span class="og-num">3</span><input class="ans-box js-save" data-key="u1-p1-3" maxlength="1" aria-label="Answer for gap 3"></div>
+          <ol>
+            <li><span class="l">A</span> belongs</li>
+            <li><span class="l">B</span> consists</li>
+            <li><span class="l">C</span> derives</li>
+            <li><span class="l">D</span> refers</li>
+          </ol>
+        </div>
+        <div class="opt-group">
+          <div class="og-head"><span class="og-num">4</span><input class="ans-box js-save" data-key="u1-p1-4" maxlength="1" aria-label="Answer for gap 4"></div>
+          <ol>
+            <li><span class="l">A</span> blow</li>
+            <li><span class="l">B</span> breathe</li>
+            <li><span class="l">C</span> throw</li>
+            <li><span class="l">D</span> pour</li>
+          </ol>
+        </div>
+        <div class="opt-group">
+          <div class="og-head"><span class="og-num">5</span><input class="ans-box js-save" data-key="u1-p1-5" maxlength="1" aria-label="Answer for gap 5"></div>
+          <ol>
+            <li><span class="l">A</span> leans</li>
+            <li><span class="l">B</span> bases</li>
+            <li><span class="l">C</span> settles</li>
+            <li><span class="l">D</span> depends</li>
+          </ol>
+        </div>
+        <div class="opt-group">
+          <div class="og-head"><span class="og-num">6</span><input class="ans-box js-save" data-key="u1-p1-6" maxlength="1" aria-label="Answer for gap 6"></div>
+          <ol>
+            <li><span class="l">A</span> point</li>
+            <li><span class="l">B</span> show</li>
+            <li><span class="l">C</span> name</li>
+            <li><span class="l">D</span> mark</li>
+          </ol>
+        </div>
+        <div class="opt-group">
+          <div class="og-head"><span class="og-num">7</span><input class="ans-box js-save" data-key="u1-p1-7" maxlength="1" aria-label="Answer for gap 7"></div>
+          <ol>
+            <li><span class="l">A</span> match</li>
+            <li><span class="l">B</span> suit</li>
+            <li><span class="l">C</span> fall</li>
+            <li><span class="l">D</span> belong</li>
+          </ol>
+        </div>
+        <div class="opt-group">
+          <div class="og-head"><span class="og-num">8</span><input class="ans-box js-save" data-key="u1-p1-8" maxlength="1" aria-label="Answer for gap 8"></div>
+          <ol>
+            <li><span class="l">A</span> able</li>
+            <li><span class="l">B</span> capable</li>
+            <li><span class="l">C</span> possible</li>
+            <li><span class="l">D</span> likely</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="acc">
+        <button class="acc-btn" aria-expanded="false"><span class="ico">i</span> Exam strategy — Part 1 <span class="chev">▾</span></button>
+        <div class="acc-panel">
+          <div class="phrase-grid">
+            <div class="phrase-col">
+              <h5>What is being tested</h5>
+              <ul>
+                <li>collocation — <em>place emphasis on, take the initiative</em></li>
+                <li>phrasal and fixed expressions</li>
+                <li>the preposition that follows the word</li>
+                <li>shades of meaning between near-synonyms</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Procedure</h5>
+              <ul>
+                <li>Read the title and the whole text before you decide anything.</li>
+                <li>Cover the options; predict the missing word yourself.</li>
+                <li>Read the full sentence with each option, including the words after the gap.</li>
+                <li>Eliminate options that do not take the following preposition.</li>
+                <li>Never leave a gap empty — an informed guess costs nothing.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion</div>
+        <ol>
+          <li>The text claims that bureaucratic organisations become <em>rigid</em> over time. Can you think of a public institution you know where predictability is far more valuable than inspiration? Explain your choice.</li>
+          <li>Why do you think citizens are so often attracted to charismatic figures in politics, even when procedural competence produces better long-term results?</li>
+          <li>The final paragraph describes an administrator who adapts to the situation. What might be the disadvantage of such flexibility for the people working under that person?</li>
+        </ol>
+        <p class="fu-note">In pairs, agree on one sentence that summarises the writer's overall argument. Compare your sentence with another pair.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ---------- TASK 3: FCE READING PART 5 ---------- -->
+  <section class="task block" id="task3">
+    <div class="task-head">
+      <div class="tnum">3</div>
+      <div class="t-titles">
+        <h3>Reading — Part 5: Multiple Choice</h3>
+        <div class="t-sub">Academic text · attitude, purpose and implication</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-time">30 min</span>
+        <span class="badge b-fce">FCE Part 5</span>
+        <span class="badge b-skill">Reading</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="rubric">
+        <p><strong>Instructions.</strong> You are going to read an article about emotional intelligence in public communication. For questions <strong>9–14</strong>, choose the answer (<strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong>) which you think fits best according to the text.</p>
+        <p><strong>Timing.</strong> Reading and questions: 20 minutes. Group discussion: 10 minutes.</p>
+      </div>
+
+      <div class="exam-text">
+        <h4 class="lead">Reading the Room: Emotional Intelligence in Public Relations</h4>
+
+        <p><span class="para-letter">1</span>When a government department announces an unwelcome decision — the closure of a small hospital, a change to pension rules, a new charge for parking in the city centre — attention naturally falls on the decision itself. Officials preparing such announcements tend to assume that any anger which follows is a reaction to the policy, and that the only realistic response is to explain the policy more thoroughly. A growing body of research into public communication suggests otherwise. Citizens are frequently just as offended by the manner of the announcement as by its content: by the impression that nobody in the department had paused to consider what the news would feel like to the people receiving it.</p>
+
+        <p><span class="para-letter">2</span>The capacity to consider precisely that is what psychologists call emotional intelligence. The term entered academic literature in the 1990s and has since been divided into four broad abilities: perceiving emotion in oneself and in others, using emotion to guide thinking, understanding how emotions develop and change, and managing emotional responses. It is worth noting what the definition does not include. Emotional intelligence is not a synonym for warmth, and it is certainly not the same as being agreeable. An official who tells a room full of angry residents whatever they wish to hear has not demonstrated emotional intelligence; he has simply postponed the argument. The skill lies in reading a situation accurately and then choosing a response, which occasionally means delivering an unpopular message without pretending it is popular.</p>
+
+        <p><span class="para-letter">3</span>The difference this makes can be surprisingly concrete. In a study of flood-response meetings in northern England, researchers compared recordings of officials addressing residents whose homes had been damaged. One spokesperson opened with the technical detail: drainage capacity, insurance procedures, the timetable for repairs. All of it was accurate, and almost none of it was heard. A second spokesperson, facing an equally hostile audience, began by naming the emotion in the room — she said that if she had spent three nights in a sports hall she would be furious too — and only afterwards moved on to the drainage figures. The information she conveyed was identical. The evaluations residents completed afterwards were not: the second meeting produced markedly higher ratings for competence, not merely for sympathy. Feeling understood, it seems, makes people willing to listen to detail they would otherwise dismiss.</p>
+
+        <p><span class="para-letter">4</span>None of this comes free, however. The effort of managing one's own feelings while attending closely to everybody else's has a name in the research literature — emotional labour — and there is now substantial evidence that it exhausts the people who perform it. Front-line staff in housing offices, benefits centres and hospital reception areas report levels of fatigue that have little to do with the number of hours they work. What tires them is the requirement to appear calm and interested for eight hours, whatever they happen to feel. One researcher has described it as an expensive kind of acting, and the phrase is a useful corrective to the cheerful tone of much management training, which presents emotional intelligence as a resource that can simply be switched on. Departments that demand it without adjusting workloads are, in practice, transferring a cost from the institution to the individual.</p>
+
+        <p><span class="para-letter">5</span>Whether the skill can be taught at all remains contested. Short courses certainly improve how participants score on questionnaires, but questionnaires measure what people believe about themselves rather than how they behave under pressure at half past four on a difficult afternoon. The more convincing results come from long-term programmes in which staff are observed, filmed and given detailed feedback over months — an approach few public bodies are willing to fund. My own view is that the evidence supports cautious optimism rather than enthusiasm: the ability appears to develop, but slowly, and only where senior managers model it themselves. A one-day workshop delivered to employees whose director never leaves his office is unlikely to change very much.</p>
+
+        <p><span class="para-letter">6</span>For those responsible for recruitment, the practical consequence is uncomfortable. Selection procedures in the public sector are built around qualifications, written tests and formal interviews, all of which are relatively straightforward to defend if a candidate complains. Emotional intelligence resists that kind of documentation. Yet the officials whom citizens remember, and trust, are rarely the ones with the most impressive paper record. They are the ones who noticed, in a crowded room on a bad afternoon, what everybody else was feeling — and adjusted.</p>
+      </div>
+
+      <ol class="qlist">
+        <li>
+          <div class="qstem"><span class="qn">9</span> In the first paragraph, the writer suggests that officials making unpopular announcements</div>
+          <ul class="qopts">
+            <li><label><input type="radio" name="q9"><span class="l">A</span> underestimate how strongly the public will react to the decision.</label></li>
+            <li><label><input type="radio" name="q9"><span class="l">B</span> misunderstand where much of the public's irritation actually comes from.</label></li>
+            <li><label><input type="radio" name="q9"><span class="l">C</span> fail to provide citizens with sufficient factual explanation.</label></li>
+            <li><label><input type="radio" name="q9"><span class="l">D</span> deliberately avoid contact with the communities affected.</label></li>
+          </ul>
+        </li>
+        <li>
+          <div class="qstem"><span class="qn">10</span> What point does the writer make about emotional intelligence in the second paragraph?</div>
+          <ul class="qopts">
+            <li><label><input type="radio" name="q10"><span class="l">A</span> It has been defined too narrowly by academic psychologists.</label></li>
+            <li><label><input type="radio" name="q10"><span class="l">B</span> It is most easily observed in situations involving conflict.</label></li>
+            <li><label><input type="radio" name="q10"><span class="l">C</span> It is frequently confused with a willingness to please people.</label></li>
+            <li><label><input type="radio" name="q10"><span class="l">D</span> It develops naturally in officials who deal with the public.</label></li>
+          </ul>
+        </li>
+        <li>
+          <div class="qstem"><span class="qn">11</span> The two flood-response meetings are described in order to show that</div>
+          <ul class="qopts">
+            <li><label><input type="radio" name="q11"><span class="l">A</span> audiences prefer speakers who avoid technical information.</label></li>
+            <li><label><input type="radio" name="q11"><span class="l">B</span> residents judged the second official to be better informed as well as kinder.</label></li>
+            <li><label><input type="radio" name="q11"><span class="l">C</span> the first official had been given inaccurate figures to present.</label></li>
+            <li><label><input type="radio" name="q11"><span class="l">D</span> people in a crisis are unable to absorb detailed explanations.</label></li>
+          </ul>
+        </li>
+        <li>
+          <div class="qstem"><span class="qn">12</span> The writer quotes the phrase 'an expensive kind of acting' to emphasise</div>
+          <ul class="qopts">
+            <li><label><input type="radio" name="q12"><span class="l">A</span> the personal price paid by staff who are required to manage their feelings.</label></li>
+            <li><label><input type="radio" name="q12"><span class="l">B</span> the dishonesty involved in concealing one's true opinion from citizens.</label></li>
+            <li><label><input type="radio" name="q12"><span class="l">C</span> the amount public bodies now spend on communication training.</label></li>
+            <li><label><input type="radio" name="q12"><span class="l">D</span> the difficulty of recruiting suitable people for front-line positions.</label></li>
+          </ul>
+        </li>
+        <li>
+          <div class="qstem"><span class="qn">13</span> What is the writer's attitude to emotional intelligence training in the fifth paragraph?</div>
+          <ul class="qopts">
+            <li><label><input type="radio" name="q13"><span class="l">A</span> He is convinced that the skill cannot be acquired in adulthood.</label></li>
+            <li><label><input type="radio" name="q13"><span class="l">B</span> He believes progress is possible but doubts that brief courses achieve it.</label></li>
+            <li><label><input type="radio" name="q13"><span class="l">C</span> He regrets that so few employees are willing to take part.</label></li>
+            <li><label><input type="radio" name="q13"><span class="l">D</span> He argues that questionnaires are the most reliable measure available.</label></li>
+          </ul>
+        </li>
+        <li>
+          <div class="qstem"><span class="qn">14</span> In the final paragraph, the writer identifies a problem for those who recruit staff, namely that</div>
+          <ul class="qopts">
+            <li><label><input type="radio" name="q14"><span class="l">A</span> candidates with strong qualifications rarely apply for front-line roles.</label></li>
+            <li><label><input type="radio" name="q14"><span class="l">B</span> formal interviews are now regarded as legally unsafe.</label></li>
+            <li><label><input type="radio" name="q14"><span class="l">C</span> the quality that matters most to citizens is hard to assess objectively.</label></li>
+            <li><label><input type="radio" name="q14"><span class="l">D</span> senior managers are unwilling to change established procedures.</label></li>
+          </ul>
+        </li>
+      </ol>
+
+      <div class="mini-h">Vocabulary harvest — record five useful items from the text</div>
+      <textarea class="text-in js-save" data-key="u1-read-vocab" rows="3" placeholder="e.g. to postpone the argument; a hostile audience; a corrective to…; front-line staff; to resist documentation"></textarea>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-reading group discussion — 10 minutes</div>
+        <ol>
+          <li>The writer claims that the second spokesperson was rated higher for <em>competence</em>, not only for sympathy. Why should acknowledging emotion make somebody appear more competent? Do you accept this conclusion from a single study?</li>
+          <li>Emotional labour is described as a cost transferred from the institution to the individual. What could a public body realistically do to reduce that cost — and who should pay for it?</li>
+          <li>Should emotional intelligence be formally assessed when recruiting civil servants? Design one selection task that might reveal it, and identify the fairness problem your task creates.</li>
+          <li>The writer states his own view openly in paragraph 5. Find the exact words that signal opinion rather than evidence. Does an academic writer have the right to do this?</li>
+        </ol>
+        <p class="fu-note">Work in groups of three. Nominate one speaker to summarise your group's position in ninety seconds, using at least three items from your vocabulary harvest.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ---------- TASK 4: FCE USE OF ENGLISH PART 3 ---------- -->
+  <section class="task block" id="task4">
+    <div class="task-head">
+      <div class="tnum">4</div>
+      <div class="t-titles">
+        <h3>Use of English — Part 3: Word Formation</h3>
+        <div class="t-sub">Prefixes, suffixes and internal changes · ethical conduct</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-time">15 min</span>
+        <span class="badge b-fce">FCE Part 3</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="rubric">
+        <p><strong>Instructions.</strong> For questions <strong>15–22</strong>, use the word given in capitals at the end of some of the lines to form a word that fits in the gap in the same line. There is an example at the beginning <strong>(0)</strong>.</p>
+        <p>Check three things every time: the <strong>part of speech</strong> required, whether the word must be <strong>singular or plural</strong>, and whether a <strong>negative prefix</strong> is needed.</p>
+      </div>
+
+      <div class="exam-text">
+        <h4 class="lead">Integrity in Public Office</h4>
+
+        <div class="wf-line">
+          <div class="wf-text">Every state expects a great deal from the men and women who serve it, and public <em>expectations</em> have risen steadily over the past thirty years.</div>
+          <div class="wf-root">0 · EXPECT</div>
+        </div>
+
+        <div class="wf-line">
+          <div class="wf-text"><span class="gap-num">15</span> Citizens judge their administrators not only by technical <input class="wf-in js-save" data-key="u1-p3-15" aria-label="Answer for gap 15"> but also by character.</div>
+          <div class="wf-root">COMPETENT</div>
+        </div>
+
+        <div class="wf-line">
+          <div class="wf-text"><span class="gap-num">16</span> An official may be exceptionally well qualified and still lose the trust of an entire city through a single act of <input class="wf-in js-save" data-key="u1-p3-16" aria-label="Answer for gap 16">.</div>
+          <div class="wf-root">HONEST</div>
+        </div>
+
+        <div class="wf-line">
+          <div class="wf-text"><span class="gap-num">17</span> Ethical codes across Europe describe similar behaviour. Officials are expected to be <input class="wf-in js-save" data-key="u1-p3-17" aria-label="Answer for gap 17"> to the needs of the communities they serve,</div>
+          <div class="wf-root">RESPOND</div>
+        </div>
+
+        <div class="wf-line">
+          <div class="wf-text"><span class="gap-num">18</span> and their conduct should be <input class="wf-in js-save" data-key="u1-p3-18" aria-label="Answer for gap 18">, so that ordinary people know in advance what the state will do.</div>
+          <div class="wf-root">PREDICT</div>
+        </div>
+
+        <div class="wf-line">
+          <div class="wf-text"><span class="gap-num">19</span> Sound <input class="wf-in js-save" data-key="u1-p3-19" aria-label="Answer for gap 19"> matters just as much as obedience to the rules.</div>
+          <div class="wf-root">JUDGE</div>
+        </div>
+
+        <div class="wf-line">
+          <div class="wf-text"><span class="gap-num">20</span> No regulation can cover every situation, and an administrator frequently has to decide alone whether a particular request is <input class="wf-in js-save" data-key="u1-p3-20" aria-label="Answer for gap 20"> or not.</div>
+          <div class="wf-root">REASON</div>
+        </div>
+
+        <div class="wf-line">
+          <div class="wf-text"><span class="gap-num">21</span> Perhaps the most demanding quality of all is the <input class="wf-in js-save" data-key="u1-p3-21" aria-label="Answer for gap 21"> to say no.</div>
+          <div class="wf-root">WILLING</div>
+        </div>
+
+        <div class="wf-line">
+          <div class="wf-text"><span class="gap-num">22</span> Refusing an inappropriate favour to a colleague or a relative may damage a career, but the <input class="wf-in js-save" data-key="u1-p3-22" aria-label="Answer for gap 22"> to refuse damages an entire institution.</div>
+          <div class="wf-root">FAIL</div>
+        </div>
+      </div>
+
+      <div class="acc">
+        <button class="acc-btn" aria-expanded="false"><span class="ico">i</span> Word-building reference for this topic <span class="chev">▾</span></button>
+        <div class="acc-panel">
+          <div class="table-scroll">
+            <table class="coll">
+              <thead>
+                <tr><th>Verb</th><th>Noun (thing / quality)</th><th>Noun (person)</th><th>Adjective</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="term">to govern</td><td>government, governance</td><td>governor</td><td>governmental</td></tr>
+                <tr><td class="term">to administer</td><td>administration</td><td>administrator</td><td>administrative</td></tr>
+                <tr><td class="term">to corrupt</td><td>corruption</td><td>—</td><td>corrupt / incorruptible</td></tr>
+                <tr><td class="term">to account (for)</td><td>accountability</td><td>accountant</td><td>accountable / unaccountable</td></tr>
+                <tr><td class="term">to rely (on)</td><td>reliability</td><td>—</td><td>reliable / unreliable</td></tr>
+                <tr><td class="term">to decide</td><td>decision, decisiveness</td><td>decision-maker</td><td>decisive / indecisive</td></tr>
+                <tr><td class="term">to consider</td><td>consideration</td><td>—</td><td>considerate / inconsiderate</td></tr>
+                <tr><td class="term">to serve</td><td>service</td><td>servant, server</td><td>serviceable</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="save-note">Note the spelling changes: <em>judge → judgement</em> (also spelt <em>judgment</em>), <em>able → ability</em>, <em>responsible → responsibility</em>, <em>maintain → maintenance</em>.</p>
+        </div>
+      </div>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion</div>
+        <ol>
+          <li>The text argues that predictability protects citizens. Can you describe a situation in which a completely predictable official would actually be a problem?</li>
+          <li>Gap 21 concerns the ability to refuse a favour to a relative. In your view, is this harder in a small town than in a capital city? Why?</li>
+          <li>Choose three words you produced in this task and use each one in a sentence about a public institution you know well.</li>
+        </ol>
+        <p class="fu-note">Keep the completed word-building table — you will need this vocabulary in the writing task in Lesson 2.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LESSON 2
+       ================================================================ -->
+  <div class="lesson-divider" id="lesson2">
+    <div class="tag">Lesson 2 · 90 minutes</div>
+    <h2>Values, Background &amp; the FCE Format</h2>
+    <p>Where values come from, and how to talk about them under exam conditions: collocation work, the full Speaking paper (Parts 2–4) with live timers, key word transformation, and a guided writing workshop.</p>
+  </div>
+
+  <!-- ---------- TASK 5: VOCABULARY & SPEAKING ---------- -->
+  <section class="task block" id="task5">
+    <div class="task-head">
+      <div class="tnum">5</div>
+      <div class="t-titles">
+        <h3>Vocabulary &amp; Speaking: Family Background and Core Values</h3>
+        <div class="t-sub">Collocation · describing upbringing and integrity</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-time">15 min</span>
+        <span class="badge b-skill">Vocabulary</span>
+        <span class="badge b-skill">Speaking</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="rubric">
+        <p><strong>Step 1 (5 min).</strong> Study the collocation bank. Underline any five expressions you have never used actively before.</p>
+        <p><strong>Step 2 (10 min).</strong> Discuss the questions below in groups of three. Every answer must contain at least one expression from the bank, and every opinion must be supported by an example — from your own family, your city, or public life.</p>
+      </div>
+
+      <div class="mini-h">Collocation bank — upbringing, background and values</div>
+      <div class="table-scroll">
+        <table class="coll">
+          <thead>
+            <tr><th style="width:34%">Expression</th><th>Meaning &amp; example</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="term">a close-knit family</td><td>whose members support one another closely — <em>She comes from a close-knit family in which every decision was discussed at the table.</em></td></tr>
+            <tr><td class="term">a modest upbringing</td><td>a childhood without wealth — <em>Several senior ministers are proud of their modest upbringing.</em></td></tr>
+            <tr><td class="term">a privileged background</td><td>with advantages of money, education or connections — <em>Critics argued that his privileged background left him out of touch.</em></td></tr>
+            <tr><td class="term">to instil values in somebody</td><td>to establish beliefs in someone gradually — <em>My grandmother instilled a strong sense of duty in all of us.</em></td></tr>
+            <tr><td class="term">to bring somebody up to do something</td><td>to raise a child in a certain way — <em>I was brought up to treat every applicant with the same respect.</em></td></tr>
+            <tr><td class="term">to take after somebody</td><td>to resemble an older relative — <em>He takes after his mother: patient, but impossible to persuade.</em></td></tr>
+            <tr><td class="term">a strong sense of duty / justice</td><td>a powerful internal obligation — <em>What the service needs is a strong sense of duty, not enthusiasm.</em></td></tr>
+            <tr><td class="term">deeply rooted values</td><td>beliefs that are firmly established — <em>Her attitude to public money reflects deeply rooted values.</em></td></tr>
+            <tr><td class="term">a role model</td><td>a person whose behaviour others copy — <em>For many young officials, she remains a role model.</em></td></tr>
+            <tr><td class="term">a self-made official</td><td>someone successful through their own effort — <em>He is a self-made administrator who began as a clerk.</em></td></tr>
+            <tr><td class="term">to follow in somebody's footsteps</td><td>to do what an older relative did — <em>She followed in her father's footsteps into local government.</em></td></tr>
+            <tr><td class="term">to break with tradition</td><td>to stop doing what has always been done — <em>He broke with family tradition and refused a post in the ministry.</em></td></tr>
+            <tr><td class="term">work–life balance</td><td>the division between job and private life — <em>A healthy work–life balance is rare in crisis management.</em></td></tr>
+            <tr><td class="term">to draw a line between</td><td>to separate two things clearly — <em>Officials must draw a line between friendship and favour.</em></td></tr>
+            <tr><td class="term">a conflict of interest</td><td>a clash between duty and private advantage — <em>She declared a conflict of interest and left the room.</em></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="acc">
+        <button class="acc-btn" aria-expanded="false"><span class="ico">✦</span> Useful language — B2 adjectives of character (with dependent prepositions) <span class="chev">▾</span></button>
+        <div class="acc-panel">
+          <div class="phrase-grid">
+            <div class="phrase-col">
+              <h5>Positive</h5>
+              <ul>
+                <li><strong>conscientious</strong> — <em>careful and thorough about duties</em></li>
+                <li><strong>principled</strong> — <em>acting on firm moral beliefs</em></li>
+                <li><strong>even-tempered</strong> — <em>calm, not easily upset</em></li>
+                <li><strong>trustworthy</strong> — <em>can be relied on completely</em></li>
+                <li><strong>open-minded</strong> — <em>willing to consider new ideas</em></li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Double-edged</h5>
+              <ul>
+                <li><strong>ambitious</strong> — <em>driven; sometimes at others' expense</em></li>
+                <li><strong>single-minded</strong> — <em>focused; possibly blind to alternatives</em></li>
+                <li><strong>loyal</strong> — <em>faithful; occasionally at the cost of honesty</em></li>
+                <li><strong>cautious</strong> — <em>careful; may be too slow to act</em></li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Prepositions to memorise</h5>
+              <ul>
+                <li>committed <strong>to</strong> public service</li>
+                <li>accountable <strong>to</strong> parliament <strong>for</strong> spending</li>
+                <li>capable <strong>of</strong> making hard decisions</li>
+                <li>sensitive <strong>to</strong> criticism</li>
+                <li>consistent <strong>with</strong> our values</li>
+                <li>to be brought up <strong>by</strong> / <strong>in</strong> a family that…</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-h">Discussion questions</div>
+      <div class="card-grid">
+        <div class="dcard">
+          <div class="dc-n">Question A</div>
+          <h4>Where values begin</h4>
+          <p class="dc-q">Which has a greater influence on a public servant's integrity: the family that brought them up, or the institution that employs them? Give one example of each.</p>
+        </div>
+        <div class="dcard">
+          <div class="dc-n">Question B</div>
+          <h4>Background and empathy</h4>
+          <p class="dc-q">Does a modest upbringing make an official more understanding of ordinary citizens — or simply more determined never to be poor again?</p>
+        </div>
+        <div class="dcard">
+          <div class="dc-n">Question C</div>
+          <h4>Following footsteps</h4>
+          <p class="dc-q">In your country, is it common for people to follow their parents into public service? Should institutions welcome this or be suspicious of it?</p>
+        </div>
+      </div>
+
+      <textarea class="text-in js-save" data-key="u1-vocab-notes" rows="3" placeholder="Notes for your group discussion — collocations you intend to use…"></textarea>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion</div>
+        <ol>
+          <li>Several expressions in the bank (<em>a privileged background</em>, <em>to break with tradition</em>) carry a hidden judgement. Which of them are neutral and which are not? How would you rephrase them neutrally in an official document?</li>
+          <li>Is <em>work–life balance</em> a realistic expectation for senior public servants, or an idea borrowed from the private sector that does not apply to them?</li>
+          <li>Choose one value your family taught you that you believe would make you a better administrator, and one that might make you a worse one.</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ---------- TASK 6: FCE SPEAKING PARTS 2, 3 & 4 ---------- -->
+  <section class="task block" id="task6">
+    <div class="task-head">
+      <div class="tnum">6</div>
+      <div class="t-titles">
+        <h3>Speaking Exam Practice — Parts 2, 3 &amp; 4</h3>
+        <div class="t-sub">Long turn · collaborative task · discussion</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-time">35 min</span>
+        <span class="badge b-fce">FCE Speaking</span>
+        <span class="badge b-skill">Speaking</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="note">
+        <b>Organisation.</b> Work in threes: one Candidate A, one Candidate B, one observer who keeps time and takes notes on the checklist at the end of this task. Change roles after each part so that everybody speaks twice.
+      </div>
+
+      <!-- ===== PART 2 ===== -->
+      <h3 style="margin-top:26px;">Part 2 — The Long Turn (Candidate A)</h3>
+      <div class="rubric">
+        <p><strong>Interlocutor:</strong> “In this part of the test I'm going to give each of you two photographs. I'd like you to talk about your photographs on your own for about <strong>one minute</strong>, and also to answer a question about your partner's photographs.”</p>
+        <p><strong>Candidate A:</strong> “Here are your photographs. They show <strong>public servants working in very different environments</strong>. I'd like you to compare the photographs, and say <strong>what you think is difficult about working in each of these situations</strong>. All right? <em>(1 minute)</em>”</p>
+        <p><strong>Candidate B:</strong> “Which of these two working environments would you find more rewarding? <em>(approximately 30 seconds)</em>”</p>
+      </div>
+
+      <div class="pic-pair">
+        <figure class="pic" style="margin:0;">
+          <svg viewBox="0 0 400 300" role="img" aria-label="Illustration: a public official working alone at a desk in a formal ministry office">
+            <rect width="400" height="300" fill="#e9eef5"/>
+            <rect x="0" y="232" width="400" height="68" fill="#c9ac86"/>
+            <rect x="0" y="228" width="400" height="6" fill="#b1936d"/>
+            <!-- window -->
+            <rect x="232" y="34" width="132" height="112" rx="4" fill="#bcd7ea" stroke="#8fa9bd" stroke-width="3"/>
+            <rect x="246" y="96" width="20" height="50" fill="#9dbdd6"/>
+            <rect x="272" y="76" width="26" height="70" fill="#8fb2cd"/>
+            <rect x="304" y="104" width="18" height="42" fill="#9dbdd6"/>
+            <rect x="328" y="86" width="24" height="60" fill="#8fb2cd"/>
+            <line x1="298" y1="34" x2="298" y2="146" stroke="#8fa9bd" stroke-width="4"/>
+            <!-- bookshelf -->
+            <rect x="24" y="40" width="106" height="128" fill="#8a6a4a"/>
+            <rect x="30" y="46" width="94" height="34" fill="#6f5238"/>
+            <rect x="30" y="86" width="94" height="34" fill="#6f5238"/>
+            <rect x="30" y="126" width="94" height="36" fill="#6f5238"/>
+            <g fill="#c9573f"><rect x="34" y="50" width="9" height="26"/><rect x="58" y="90" width="9" height="26"/><rect x="96" y="130" width="10" height="28"/></g>
+            <g fill="#2f5d7c"><rect x="46" y="50" width="8" height="26"/><rect x="70" y="90" width="11" height="26"/><rect x="34" y="130" width="9" height="28"/></g>
+            <g fill="#d8c48a"><rect x="57" y="50" width="10" height="26"/><rect x="84" y="90" width="8" height="26"/><rect x="47" y="130" width="11" height="28"/></g>
+            <g fill="#5d7a52"><rect x="70" y="50" width="9" height="26"/><rect x="34" y="90" width="10" height="26"/><rect x="62" y="130" width="9" height="28"/></g>
+            <!-- framed emblem -->
+            <rect x="152" y="52" width="58" height="46" rx="3" fill="#f5f1e6" stroke="#8a6a4a" stroke-width="4"/>
+            <circle cx="181" cy="75" r="13" fill="none" stroke="#16233f" stroke-width="3"/>
+            <path d="M181 66 l4 8 h-8 z" fill="#c08a2e"/>
+            <!-- flag on desk -->
+            <rect x="300" y="176" width="3" height="46" fill="#5b5b5b"/>
+            <path d="M303 178 h34 v22 h-34 z" fill="#f0f3f7"/>
+            <path d="M303 186 h34 v7 h-34 z" fill="#2f5d7c"/>
+            <path d="M303 193 h34 v7 h-34 z" fill="#b23a3a"/>
+            <!-- desk -->
+            <rect x="46" y="214" width="306" height="12" rx="3" fill="#7a5a3c"/>
+            <rect x="62" y="226" width="14" height="42" fill="#6a4c31"/>
+            <rect x="322" y="226" width="14" height="42" fill="#6a4c31"/>
+            <!-- monitor -->
+            <rect x="212" y="164" width="72" height="46" rx="3" fill="#3c4658"/>
+            <rect x="217" y="169" width="62" height="36" fill="#93b7c9"/>
+            <rect x="242" y="210" width="12" height="6" fill="#3c4658"/>
+            <!-- papers + folders -->
+            <rect x="86" y="200" width="52" height="14" fill="#e6dfd0" transform="rotate(-3 112 207)"/>
+            <rect x="92" y="196" width="52" height="14" fill="#f6f2e8" transform="rotate(2 118 203)"/>
+            <rect x="150" y="198" width="42" height="16" rx="2" fill="#c08a2e"/>
+            <!-- mug -->
+            <ellipse cx="300" cy="212" rx="9" ry="4" fill="#ffffff"/>
+            <rect x="291" y="200" width="18" height="13" rx="2" fill="#ffffff"/>
+            <path d="M309 203 q7 3 0 8" fill="none" stroke="#ffffff" stroke-width="3"/>
+            <!-- official -->
+            <ellipse cx="176" cy="272" rx="42" ry="10" fill="#00000012"/>
+            <path d="M148 214 q28 -34 56 0 z" fill="#2c3e5c"/>
+            <rect x="150" y="176" width="52" height="42" rx="10" fill="#334a70"/>
+            <path d="M164 176 l12 22 l12 -22 z" fill="#f2f4f8"/>
+            <path d="M172 178 l4 20 l4 -20 z" fill="#b23a3a"/>
+            <circle cx="176" cy="158" r="17" fill="#e8b98f"/>
+            <path d="M159 154 q17 -20 34 0 q-6 -12 -17 -12 q-11 0 -17 12 z" fill="#4a3a2c"/>
+            <rect x="140" y="188" width="18" height="24" rx="8" fill="#334a70" transform="rotate(18 149 200)"/>
+            <rect x="196" y="188" width="18" height="24" rx="8" fill="#334a70" transform="rotate(-18 205 200)"/>
+          </svg>
+          <figcaption class="cap"><b>Photograph 1</b>An official working alone in a government office</figcaption>
+        </figure>
+
+        <figure class="pic" style="margin:0;">
+          <svg viewBox="0 0 400 300" role="img" aria-label="Illustration: an official in a safety vest addressing residents at a community crisis meeting">
+            <rect width="400" height="300" fill="#eae6df"/>
+            <rect x="0" y="0" width="400" height="30" fill="#dcd6cc"/>
+            <g fill="#f6efb9"><rect x="52" y="6" width="46" height="9" rx="4"/><rect x="180" y="6" width="46" height="9" rx="4"/><rect x="308" y="6" width="46" height="9" rx="4"/></g>
+            <rect x="0" y="236" width="400" height="64" fill="#b9b0a4"/>
+            <!-- emergency board -->
+            <rect x="196" y="46" width="168" height="112" rx="4" fill="#fbfaf6" stroke="#5b6472" stroke-width="4"/>
+            <rect x="206" y="58" width="70" height="52" fill="#cfe0ea"/>
+            <path d="M206 92 l16 -12 l14 10 l18 -20 l22 16 v24 h-70 z" fill="#7fa8c4"/>
+            <path d="M206 96 q18 -16 34 -4 q16 12 30 -6" fill="none" stroke="#b23a3a" stroke-width="3"/>
+            <g fill="#5b6472"><rect x="288" y="58" width="64" height="6"/><rect x="288" y="72" width="52" height="6"/><rect x="288" y="86" width="58" height="6"/><rect x="288" y="100" width="40" height="6"/></g>
+            <g fill="#c08a2e"><rect x="206" y="122" width="34" height="8"/><rect x="248" y="122" width="46" height="8"/><rect x="302" y="122" width="26" height="8"/></g>
+            <g fill="#5b6472"><rect x="206" y="138" width="80" height="6"/><rect x="294" y="138" width="58" height="6"/></g>
+            <!-- exit sign -->
+            <rect x="26" y="40" width="52" height="22" rx="3" fill="#2f7d54"/>
+            <rect x="32" y="46" width="40" height="10" fill="#e8f3ec"/>
+            <!-- official with hi-vis vest -->
+            <ellipse cx="122" cy="238" rx="40" ry="10" fill="#00000012"/>
+            <rect x="100" y="150" width="44" height="60" rx="10" fill="#3d4756"/>
+            <path d="M104 150 h36 v60 h-36 z" fill="#e9dc3f"/>
+            <path d="M104 150 l10 0 l0 60 l-10 0 z" fill="#3d4756" opacity=".18"/>
+            <rect x="104" y="176" width="36" height="7" fill="#cfd6e2"/>
+            <rect x="104" y="192" width="36" height="7" fill="#cfd6e2"/>
+            <circle cx="122" cy="132" r="16" fill="#d9a072"/>
+            <path d="M106 128 q16 -19 32 0 q-5 -12 -16 -12 q-11 0 -16 12 z" fill="#2f2a26"/>
+            <rect x="88" y="158" width="16" height="34" rx="7" fill="#e9dc3f" transform="rotate(14 96 174)"/>
+            <rect x="140" y="152" width="16" height="34" rx="7" fill="#e9dc3f" transform="rotate(-34 148 168)"/>
+            <!-- clipboard -->
+            <rect x="150" y="132" width="26" height="34" rx="2" fill="#a97c4c" transform="rotate(-14 163 149)"/>
+            <rect x="153" y="137" width="20" height="26" fill="#fdfcf7" transform="rotate(-14 163 150)"/>
+            <!-- legs -->
+            <rect x="106" y="208" width="14" height="30" fill="#3d4756"/>
+            <rect x="126" y="208" width="14" height="30" fill="#3d4756"/>
+            <!-- seated residents (from behind) -->
+            <g>
+              <rect x="12" y="252" width="58" height="40" rx="10" fill="#5d6f8c"/>
+              <circle cx="41" cy="242" r="17" fill="#e0ac7e"/>
+              <path d="M24 240 q17 -20 34 0 q-6 -13 -17 -13 q-11 0 -17 13 z" fill="#4b3a2a"/>
+            </g>
+            <g>
+              <rect x="96" y="258" width="58" height="40" rx="10" fill="#8a6a76"/>
+              <circle cx="125" cy="248" r="17" fill="#c98f63"/>
+              <path d="M108 250 q4 -24 17 -24 q13 0 17 24 q-6 -8 -17 -8 q-11 0 -17 8 z" fill="#3a2f28"/>
+            </g>
+            <g>
+              <rect x="184" y="250" width="58" height="42" rx="10" fill="#4f7a6b"/>
+              <circle cx="213" cy="240" r="17" fill="#eebd94"/>
+              <path d="M196 238 q17 -20 34 0 q-6 -13 -17 -13 q-11 0 -17 13 z" fill="#7c6a52"/>
+              <rect x="230" y="212" width="11" height="38" rx="5" fill="#eebd94" transform="rotate(6 235 231)"/>
+            </g>
+            <g>
+              <rect x="272" y="258" width="58" height="40" rx="10" fill="#7c6f8c"/>
+              <circle cx="301" cy="248" r="17" fill="#d29b6d"/>
+              <path d="M284 246 q17 -20 34 0 q-6 -13 -17 -13 q-11 0 -17 13 z" fill="#2f2a26"/>
+            </g>
+            <g>
+              <rect x="342" y="250" width="56" height="42" rx="10" fill="#5d6f8c"/>
+              <circle cx="370" cy="240" r="17" fill="#f0c69f"/>
+              <path d="M353 242 q4 -24 17 -24 q13 0 17 24 q-6 -8 -17 -8 q-11 0 -17 8 z" fill="#5c4632"/>
+            </g>
+          </svg>
+          <figcaption class="cap"><b>Photograph 2</b>An official meeting residents during a local emergency</figcaption>
+        </figure>
+      </div>
+
+      <div class="timer-bar">
+        <div class="timer">
+          <div class="t-label">Part 2 · Long turn</div>
+          <div class="t-role">Candidate A — compare the photographs</div>
+          <div class="t-display" data-role="display">01:00</div>
+          <div class="t-track"><div class="t-fill" data-role="fill"></div></div>
+          <div class="t-btns">
+            <button class="t-btn js-timer" data-seconds="60" data-action="start">Start</button>
+            <button class="t-btn ghost js-timer" data-action="pause">Pause</button>
+            <button class="t-btn ghost js-timer" data-action="reset">Reset</button>
+          </div>
+        </div>
+        <div class="timer">
+          <div class="t-label">Part 2 · Follow-up</div>
+          <div class="t-role">Candidate B — answer the short question</div>
+          <div class="t-display" data-role="display">00:30</div>
+          <div class="t-track"><div class="t-fill" data-role="fill"></div></div>
+          <div class="t-btns">
+            <button class="t-btn js-timer" data-seconds="30" data-action="start">Start</button>
+            <button class="t-btn ghost js-timer" data-action="pause">Pause</button>
+            <button class="t-btn ghost js-timer" data-action="reset">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc">
+        <button class="acc-btn" aria-expanded="false"><span class="ico">✦</span> Useful language — comparing, speculating and hedging <span class="chev">▾</span></button>
+        <div class="acc-panel">
+          <div class="phrase-grid">
+            <div class="phrase-col">
+              <h5>Comparing</h5>
+              <ul>
+                <li>Both photographs show officials who…</li>
+                <li>The main difference between them is that…</li>
+                <li>Whereas the first is clearly formal, the second…</li>
+                <li>In contrast to the office, this situation appears…</li>
+                <li>What they have in common is…</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Speculating</h5>
+              <ul>
+                <li>He may well have been working on this file for weeks.</li>
+                <li>She could be explaining what the authorities intend to do.</li>
+                <li>It looks as though the residents have lost their homes.</li>
+                <li>I imagine the pressure here is far greater.</li>
+                <li>Judging by their faces, they seem anxious.</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Talking about difficulty</h5>
+              <ul>
+                <li>The hardest thing about this job must be…</li>
+                <li>What I would find demanding is…</li>
+                <li>It requires a great deal of patience / self-control.</li>
+                <li>You would need to think on your feet.</li>
+                <li>There is very little room for error.</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Buying thinking time</h5>
+              <ul>
+                <li>That's an interesting question, actually.</li>
+                <li>Let me think about that for a second.</li>
+                <li>I suppose the obvious answer would be…</li>
+                <li>It rather depends on what you mean by…</li>
+              </ul>
+            </div>
+          </div>
+          <p class="save-note"><strong>Warning.</strong> Do not simply describe the two photographs one after the other. Examiners expect a genuine comparison and an answer to the second half of the question.</p>
+        </div>
+      </div>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion</div>
+        <ol>
+          <li>Which of the two officials is doing the more <em>valuable</em> work? Does the public tend to agree with you?</li>
+          <li>The second photograph shows a face-to-face meeting. In an age of online consultation, is physical presence still necessary in a crisis? What is lost when it disappears?</li>
+          <li>Listen back to your partner's long turn. Did they compare, or did they describe? Give them one concrete piece of advice.</li>
+        </ol>
+      </div>
+
+      <hr class="hr-soft">
+
+      <!-- ===== PART 3 & 4 ===== -->
+      <h3>Parts 3 &amp; 4 — Collaborative Task and Discussion</h3>
+      <div class="rubric">
+        <p><strong>Interlocutor:</strong> “Now I'd like you to talk about something together for about <strong>two minutes</strong>. Here are some values that people expect from public servants. First you have some time to look at the task.”</p>
+        <p><strong>Task (2 minutes):</strong> “Talk to each other about <strong>how each of these values helps a public servant to gain the trust of ordinary citizens</strong>.”</p>
+        <p><strong>Decision (1 minute):</strong> “Now you have about a minute to decide <strong>which two of these values are the most difficult to maintain in daily practice</strong>.”</p>
+      </div>
+
+      <div class="mindmap">
+        <div class="mm-centre">
+          <h4>Gaining the trust of citizens</h4>
+          <p>How does each value below contribute?</p>
+        </div>
+        <div class="mm-node"><h5>Impartiality</h5><p>treating every citizen alike</p></div>
+        <div class="mm-node"><h5>Transparency</h5><p>explaining how decisions are made</p></div>
+        <div class="mm-node"><h5>Accountability</h5><p>accepting responsibility for errors</p></div>
+        <div class="mm-node"><h5>Compassion</h5><p>recognising individual circumstances</p></div>
+        <div class="mm-node"><h5>Efficiency</h5><p>using public money carefully</p></div>
+      </div>
+
+      <div class="timer-bar">
+        <div class="timer">
+          <div class="t-label">Part 3 · Collaborative task</div>
+          <div class="t-role">Both candidates — discuss all five values</div>
+          <div class="t-display" data-role="display">02:00</div>
+          <div class="t-track"><div class="t-fill" data-role="fill"></div></div>
+          <div class="t-btns">
+            <button class="t-btn js-timer" data-seconds="120" data-action="start">Start</button>
+            <button class="t-btn ghost js-timer" data-action="pause">Pause</button>
+            <button class="t-btn ghost js-timer" data-action="reset">Reset</button>
+          </div>
+        </div>
+        <div class="timer">
+          <div class="t-label">Part 3 · Decision</div>
+          <div class="t-role">Both candidates — agree on two values</div>
+          <div class="t-display" data-role="display">01:00</div>
+          <div class="t-track"><div class="t-fill" data-role="fill"></div></div>
+          <div class="t-btns">
+            <button class="t-btn js-timer" data-seconds="60" data-action="start">Start</button>
+            <button class="t-btn ghost js-timer" data-action="pause">Pause</button>
+            <button class="t-btn ghost js-timer" data-action="reset">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc">
+        <button class="acc-btn" aria-expanded="false"><span class="ico">✦</span> Useful language — interacting, agreeing and reaching a decision <span class="chev">▾</span></button>
+        <div class="acc-panel">
+          <div class="phrase-grid">
+            <div class="phrase-col">
+              <h5>Inviting your partner</h5>
+              <ul>
+                <li>Shall we start with impartiality?</li>
+                <li>What's your view on that one?</li>
+                <li>How do you feel about compassion?</li>
+                <li>You go first — I'd like to hear your opinion.</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Agreeing &amp; developing</h5>
+              <ul>
+                <li>That's a good point, and I'd add that…</li>
+                <li>Exactly — which is precisely why…</li>
+                <li>I hadn't thought of that, actually.</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Disagreeing politely</h5>
+              <ul>
+                <li>I see what you mean, but I'm not entirely convinced.</li>
+                <li>That may be true in theory, though in practice…</li>
+                <li>I'd put it slightly differently.</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Reaching a decision</h5>
+              <ul>
+                <li>So shall we say accountability and compassion?</li>
+                <li>Can we agree on those two, then?</li>
+                <li>Let's rule out efficiency — it's the easiest to measure.</li>
+                <li>Neither of us seems keen on transparency, so…</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-h">Part 4 — Extended discussion questions (interlocutor asks both candidates)</div>
+      <div class="card-grid">
+        <div class="dcard"><div class="dc-n">Q1</div><p class="dc-q">Some people say that public servants should be paid as much as managers in private companies. What do you think?</p></div>
+        <div class="dcard"><div class="dc-n">Q2</div><p class="dc-q">Do you think a person's family background influences how honest they are at work?</p></div>
+        <div class="dcard"><div class="dc-n">Q3</div><p class="dc-q">How important is it for officials to admit their mistakes publicly?</p></div>
+        <div class="dcard"><div class="dc-n">Q4</div><p class="dc-q">Is it possible for someone in public office to keep their private life completely separate from their work?</p></div>
+        <div class="dcard"><div class="dc-n">Q5</div><p class="dc-q">Some young people are no longer interested in careers in the civil service. Why do you think that is?</p></div>
+        <div class="dcard"><div class="dc-n">Q6</div><p class="dc-q">Should officials be required to explain every decision to the public, even when the decision is technical?</p></div>
+      </div>
+
+      <div class="mini-h">Observer's notes — no marks, only observations</div>
+      <ul class="checklist">
+        <li><input type="checkbox" id="ob1"><label for="ob1"><b>Range.</b> The speaker used vocabulary from this unit rather than repeating simple adjectives.</label></li>
+        <li><input type="checkbox" id="ob2"><label for="ob2"><b>Development.</b> Every opinion was followed by a reason or an example.</label></li>
+        <li><input type="checkbox" id="ob3"><label for="ob3"><b>Comparison.</b> In Part 2 the two photographs were genuinely compared, not described separately.</label></li>
+        <li><input type="checkbox" id="ob4"><label for="ob4"><b>Interaction.</b> In Part 3 the candidates invited each other to speak and responded to what was said.</label></li>
+        <li><input type="checkbox" id="ob5"><label for="ob5"><b>Timing.</b> The speaker filled the full minute without long silences.</label></li>
+        <li><input type="checkbox" id="ob6"><label for="ob6"><b>Decision.</b> A clear conclusion was reached before the time ran out.</label></li>
+      </ul>
+      <textarea class="text-in js-save" data-key="u1-observer" rows="3" style="margin-top:12px;" placeholder="Two things that worked well · one thing to change next time…"></textarea>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion</div>
+        <ol>
+          <li>Your pair had to eliminate three values. Which one was hardest to give up, and what does that reveal about your priorities as future administrators?</li>
+          <li>In Part 3 candidates are assessed partly on <em>interaction</em>. Is a candidate who dominates the conversation being efficient or being rude? Where is the line?</li>
+          <li>Compare your pair's final two values with another pair's. Can a single official realistically hold all five values at once, or do some of them contradict each other?</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ---------- TASK 7: FCE USE OF ENGLISH PART 4 ---------- -->
+  <section class="task block" id="task7">
+    <div class="task-head">
+      <div class="tnum">7</div>
+      <div class="t-titles">
+        <h3>Use of English — Part 4: Key Word Transformation</h3>
+        <div class="t-sub">Past habits · wishes and regrets · perfect tenses</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-time">20 min</span>
+        <span class="badge b-fce">FCE Part 4</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="rubric">
+        <p><strong>Instructions.</strong> For questions <strong>23–28</strong>, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. <strong>Do not change the word given.</strong> You must use between <strong>two and five words</strong>, including the word given.</p>
+        <p><strong>Example (0):</strong> <em>I started studying public administration two years ago.</em> — <strong>BEEN</strong> — <em>I <u>have been studying</u> public administration for two years.</em></p>
+      </div>
+
+      <ol class="kwt">
+        <li>
+          <span class="kwt-n">23</span>
+          <div class="kwt-orig">My grandfather worked in the city archive for many years when he was young.</div>
+          <span class="kwt-key">USED</span>
+          <div class="kwt-second">My grandfather <input class="kwt-in js-save" data-key="u1-p4-23" aria-label="Answer for question 23"> in the city archive for many years when he was young.</div>
+        </li>
+        <li>
+          <span class="kwt-n">24</span>
+          <div class="kwt-orig">It's a pity I didn't apply for the internship at the ministry last spring.</div>
+          <span class="kwt-key">WISH</span>
+          <div class="kwt-second">I <input class="kwt-in js-save" data-key="u1-p4-24" aria-label="Answer for question 24"> for the internship at the ministry last spring.</div>
+        </li>
+        <li>
+          <span class="kwt-n">25</span>
+          <div class="kwt-orig">I very much regret telling my colleague about the confidential report.</div>
+          <span class="kwt-key">ONLY</span>
+          <div class="kwt-second">If <input class="kwt-in js-save" data-key="u1-p4-25" aria-label="Answer for question 25"> my colleague about the confidential report.</div>
+        </li>
+        <li>
+          <span class="kwt-n">26</span>
+          <div class="kwt-orig">Every Sunday my family would discuss local politics at the dinner table.</div>
+          <span class="kwt-key">HABIT</span>
+          <div class="kwt-second">My family <input class="kwt-in js-save" data-key="u1-p4-26" aria-label="Answer for question 26"> discussing local politics at the dinner table every Sunday.</div>
+        </li>
+        <li>
+          <span class="kwt-n">27</span>
+          <div class="kwt-orig">This is the first time I have attended a session of the city council.</div>
+          <span class="kwt-key">NEVER</span>
+          <div class="kwt-second">I <input class="kwt-in js-save" data-key="u1-p4-27" aria-label="Answer for question 27"> a session of the city council before.</div>
+        </li>
+        <li>
+          <span class="kwt-n">28</span>
+          <div class="kwt-orig">My mother took an interest in public service when she was fifteen and she still has that interest today.</div>
+          <span class="kwt-key">BEEN</span>
+          <div class="kwt-second">My mother <input class="kwt-in js-save" data-key="u1-p4-28" aria-label="Answer for question 28"> in public service since she was fifteen.</div>
+        </li>
+      </ol>
+
+      <div class="acc">
+        <button class="acc-btn" aria-expanded="false"><span class="ico">i</span> Grammar reminder — talking about the past and about regrets <span class="chev">▾</span></button>
+        <div class="acc-panel">
+          <div class="phrase-grid">
+            <div class="phrase-col">
+              <h5>Past habits &amp; states</h5>
+              <ul>
+                <li><strong>used to + infinitive</strong> — repeated actions <em>and</em> past states: <em>My father used to be a magistrate.</em></li>
+                <li><strong>would + infinitive</strong> — repeated actions only, never states: <em>He would arrive at seven every morning.</em> (NOT <s>would be</s>)</li>
+                <li><strong>be in the habit of + -ing</strong> — a more formal alternative.</li>
+                <li><strong>be/get used to + -ing</strong> — be accustomed to something. A completely different structure.</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Wishes &amp; regrets</h5>
+              <ul>
+                <li><strong>wish / if only + past simple</strong> — a present situation: <em>I wish I had more time.</em></li>
+                <li><strong>wish / if only + past perfect</strong> — a regret about the past: <em>I wish I had said nothing.</em></li>
+                <li><strong>wish + would</strong> — annoyance at another person's behaviour: <em>I wish they would answer my emails.</em></li>
+                <li><strong>should have + past participle</strong> — criticism of a past decision.</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Perfect tenses</h5>
+              <ul>
+                <li><strong>have + past participle</strong> with <em>never … before</em>, <em>the first time</em>, <em>so far</em>, <em>already</em>.</li>
+                <li><strong>have been + -ing</strong> with <em>for</em> and <em>since</em> when the activity continues.</li>
+                <li><em>It is the first time I have seen…</em> = <em>I have never seen … before.</em></li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Exam procedure</h5>
+              <ul>
+                <li>Identify the structure being tested before you write anything.</li>
+                <li>Count your words: contractions such as <em>hadn't</em> count as two.</li>
+                <li>Never change the key word — not even its form.</li>
+                <li>Check that the meaning is genuinely identical, not merely similar.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion</div>
+        <ol>
+          <li>Sentences 23, 26 and 28 all describe a family connection with public institutions. Do such connections build a tradition of service, or a closed circle? Discuss with a partner.</li>
+          <li>Sentence 25 concerns an official who shared confidential information. What should the consequences be — and does it matter whether the disclosure was accidental?</li>
+          <li>Write one true sentence about your own family using <em>used to</em> and one using <em>I wish … had</em>. Read them to your group; the group asks two follow-up questions each.</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ---------- TASK 8: WRITING WORKSHOP ---------- -->
+  <section class="task block" id="task8">
+    <div class="task-head">
+      <div class="tnum">8</div>
+      <div class="t-titles">
+        <h3>Writing Workshop — Part 1: The Opinion Essay</h3>
+        <div class="t-sub">Planning · drafting · structured peer review</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-time">20 min</span>
+        <span class="badge b-fce">FCE Writing Part 1</span>
+        <span class="badge b-skill">Writing</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="rubric">
+        <p>In your English class you have been talking about the private lives of the people who govern us. Now your teacher has asked you to write an essay.</p>
+        <p>Write an essay using <strong>all</strong> the notes and giving <strong>reasons</strong> for your point of view.</p>
+      </div>
+
+      <div class="exam-text">
+        <h4 class="lead">Should public servants keep their private family life completely separate from their public duty?</h4>
+        <p style="text-align:center;margin-bottom:.6em;"><em>Write about:</em></p>
+        <p style="text-align:center;margin:0;">
+          <strong>1</strong> &nbsp; public trust<br>
+          <strong>2</strong> &nbsp; personal freedom<br>
+          <strong>3</strong> &nbsp; …………………… <em>(your own idea)</em>
+        </p>
+        <p style="text-align:center;margin-top:1em;font-size:15px;color:#6b7488;">Write your essay in <strong>140–190 words</strong> in an appropriate style. Do not write an address.</p>
+      </div>
+
+      <div class="mini-h">Step 1 · Plan (3 minutes)</div>
+      <div class="two-col">
+        <div>
+          <p style="font-size:14.5px;color:#3f4859;margin-bottom:6px;"><strong>My third point will be:</strong></p>
+          <input class="text-in js-save" data-key="u1-essay-idea" placeholder="e.g. the effect on the official's children">
+        </div>
+        <div>
+          <p style="font-size:14.5px;color:#3f4859;margin-bottom:6px;"><strong>My overall position will be:</strong></p>
+          <input class="text-in js-save" data-key="u1-essay-thesis" placeholder="e.g. separation is desirable but only partly possible">
+        </div>
+      </div>
+
+      <div class="acc" style="margin-top:20px;">
+        <button class="acc-btn" aria-expanded="false"><span class="ico">✦</span> Useful language — structuring a B2 opinion essay <span class="chev">▾</span></button>
+        <div class="acc-panel">
+          <div class="phrase-grid">
+            <div class="phrase-col">
+              <h5>Paragraph plan</h5>
+              <ul>
+                <li><strong>¶1</strong> Introduce the issue and state that opinions differ (2–3 sentences).</li>
+                <li><strong>¶2</strong> Note 1 — public trust, with a reason and an example.</li>
+                <li><strong>¶3</strong> Note 2 — personal freedom, with a reason and an example.</li>
+                <li><strong>¶4</strong> Your own idea.</li>
+                <li><strong>¶5</strong> Conclusion — your opinion, clearly stated.</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Introducing the topic</h5>
+              <ul>
+                <li>It is often argued that…</li>
+                <li>The question of whether … divides public opinion.</li>
+                <li>People disagree about how far…</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Developing an argument</h5>
+              <ul>
+                <li>One obvious advantage of … is that…</li>
+                <li>This is largely because…</li>
+                <li>A clear example of this can be seen in…</li>
+                <li>Furthermore / What is more / In addition…</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Balancing and concluding</h5>
+              <ul>
+                <li>On the other hand, it should be remembered that…</li>
+                <li>While this may be true, …</li>
+                <li>All things considered, I believe that…</li>
+                <li>In my view, the most convincing argument is…</li>
+              </ul>
+            </div>
+          </div>
+          <p class="save-note"><strong>Register.</strong> An essay is semi-formal: avoid contractions (<em>don't</em>, <em>it's</em>), avoid <em>a lot of</em> and <em>things</em>, and do not address the reader as <em>you</em>.</p>
+        </div>
+      </div>
+
+      <div class="mini-h">Step 2 · Draft (12 minutes)</div>
+      <textarea class="text-in js-save" id="essay" data-key="u1-essay" rows="14" placeholder="Begin your essay here…"></textarea>
+
+      <div class="counter-bar">
+        <div>
+          <div class="wc-num" id="wc-num">0</div>
+          <div class="wc-label">words</div>
+        </div>
+        <div class="wc-track"><div class="wc-fill" id="wc-fill"></div></div>
+        <div class="wc-status" id="wc-status">Target: 140–190 words</div>
+      </div>
+      <p class="save-note">Your draft is stored in this browser only, on this device. It is not sent anywhere and is not marked.</p>
+
+      <div class="mini-h">Step 3 · Peer review (5 minutes) — exchange essays with a partner</div>
+      <ul class="checklist">
+        <li><input type="checkbox" id="pr1"><label for="pr1"><b>Content.</b> All three notes are covered, and the third idea is genuinely the writer's own.</label></li>
+        <li><input type="checkbox" id="pr2"><label for="pr2"><b>Position.</b> I can state the writer's opinion in one sentence after a single reading.</label></li>
+        <li><input type="checkbox" id="pr3"><label for="pr3"><b>Organisation.</b> There is a separate paragraph for each point, plus an introduction and a conclusion.</label></li>
+        <li><input type="checkbox" id="pr4"><label for="pr4"><b>Support.</b> Every argument is followed by a reason, an example or a consequence.</label></li>
+        <li><input type="checkbox" id="pr5"><label for="pr5"><b>Linking.</b> The essay uses at least four different linking expressions, and none of them is repeated.</label></li>
+        <li><input type="checkbox" id="pr6"><label for="pr6"><b>Register.</b> The style is semi-formal throughout: no contractions, no conversational vocabulary.</label></li>
+        <li><input type="checkbox" id="pr7"><label for="pr7"><b>Range.</b> The essay contains vocabulary from this unit and at least one complex structure.</label></li>
+        <li><input type="checkbox" id="pr8"><label for="pr8"><b>Length.</b> The essay is between 140 and 190 words.</label></li>
+      </ul>
+
+      <div class="two-col" style="margin-top:16px;">
+        <div>
+          <p style="font-size:14.5px;color:#3f4859;margin-bottom:6px;"><strong>Two strengths of my partner's essay:</strong></p>
+          <textarea class="text-in js-save" data-key="u1-peer-good" rows="3" placeholder="Be specific — quote the sentence you liked."></textarea>
+        </div>
+        <div>
+          <p style="font-size:14.5px;color:#3f4859;margin-bottom:6px;"><strong>One change that would improve it most:</strong></p>
+          <textarea class="text-in js-save" data-key="u1-peer-improve" rows="3" placeholder="Name the problem and suggest the correction."></textarea>
+        </div>
+      </div>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion</div>
+        <ol>
+          <li>Compare the third points chosen in your group. Which idea was the most original, and which would be the hardest to defend in front of a critical audience?</li>
+          <li>Did writing the essay change your opinion at all? Which counter-argument caused you the most difficulty?</li>
+          <li>Peer review is common in public administration too: draft policies are circulated for comment. What makes feedback useful rather than discouraging? Agree on three rules for your class.</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       INDEPENDENT HOMEWORK
+       ================================================================ -->
+  <div class="lesson-divider" id="homework">
+    <div class="tag">Independent study · approx. 60–75 minutes</div>
+    <h2>Homework &amp; Extension Materials</h2>
+    <p>Consolidate the unit at home: an extended reading text with self-study tasks, and a full FCE Use of English Part 2 open cloze on political dynasties. Bring your written answers to the next class.</p>
+  </div>
+
+  <!-- ---------- HOMEWORK 1: FURTHER READING ---------- -->
+  <section class="task block" id="hw1">
+    <div class="task-head">
+      <div class="tnum">A</div>
+      <div class="t-titles">
+        <h3>Further Reading &amp; Self-Study</h3>
+        <div class="t-sub">Extended text · note-taking · vocabulary building</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-hw">Homework</span>
+        <span class="badge b-skill">Reading</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="rubric">
+        <p><strong>Instructions.</strong> Read the text twice: first quickly, for the main argument, and then slowly with a dictionary. Then complete the four tasks below the text. Bring your answers to the next lesson — you will use them in a group discussion.</p>
+      </div>
+
+      <div class="exam-text">
+        <h4 class="lead">Merit, Background and the Modern State</h4>
+
+        <p>The modern civil service was invented, at least in part, to solve a problem of character. Before the middle of the nineteenth century, posts in most European administrations were distributed through patronage: a minister appointed the sons of his friends, and the question of whether they could do the work was rarely decisive. The reforms that followed — competitive examinations, permanent appointments, promotion on record rather than on recommendation — were designed to replace personal connection with demonstrable ability. It was, in its time, a radical idea.</p>
+
+        <p>A century and a half later, the principle is universally accepted and the practice remains stubbornly complicated. Examinations reward the skills that examinations measure, and those skills are unevenly distributed. A candidate who grew up in a household where three languages were spoken, where books lined the walls and where somebody at the dinner table could explain what a ministry actually does, arrives at the test with an advantage that has nothing to do with innate ability. Studies of recruitment in several European administrations consistently find that senior officials come from a narrower range of backgrounds than the populations they serve.</p>
+
+        <p>Why should this matter, provided the officials are competent? Two arguments are usually offered. The first is a question of legitimacy: institutions that look nothing like the society they govern find it harder to be trusted, particularly by the communities that are least represented in them. The second is more practical. Administrators design services for people whose lives they have to imagine, and imagination is easier when experience overlaps. An official who has waited for a bus in the rain at six in the morning will design a bus timetable differently from one who never has.</p>
+
+        <p>None of this amounts to an argument against merit. Nobody seriously proposes appointing incompetent officials in the interests of variety. The more useful conclusion is that merit is harder to identify than it looks, and that the confidence with which a well-prepared candidate performs in an interview is not the same thing as the capacity to serve the public well for thirty years. Several administrations now assess candidates on situational judgement rather than knowledge alone, and a few have begun recruiting apprentices at eighteen rather than graduates at twenty-two. Whether these experiments succeed will not be clear for another generation.</p>
+      </div>
+
+      <div class="mini-h">Task 1 · Summary</div>
+      <p style="font-size:14.5px;color:#3f4859;">Summarise the writer's central argument in <strong>no more than 60 words</strong>, in your own words. Do not copy phrases from the text.</p>
+      <textarea class="text-in js-save" data-key="u1-hw-summary" rows="4" placeholder="Write your 60-word summary here…"></textarea>
+
+      <div class="mini-h">Task 2 · Vocabulary file</div>
+      <p style="font-size:14.5px;color:#3f4859;">Find and record <strong>eight</strong> items from the text that you could use in an essay about public administration. For each item, write the expression, a short definition in English, and your own example sentence.</p>
+      <textarea class="text-in js-save" data-key="u1-hw-vocab" rows="5" placeholder="1. patronage — the practice of giving jobs to friends and supporters — Before the reforms, appointments depended on patronage rather than examinations.&#10;2. …"></textarea>
+
+      <div class="mini-h">Task 3 · Critical response</div>
+      <p style="font-size:14.5px;color:#3f4859;">The writer claims that “merit is harder to identify than it looks”. Write <strong>one paragraph of 80–100 words</strong> in which you either support or challenge this claim, using one example from your own country.</p>
+      <textarea class="text-in js-save" data-key="u1-hw-response" rows="5" placeholder="Write your paragraph here…"></textarea>
+
+      <div class="mini-h">Task 4 · Prepare for discussion</div>
+      <p style="font-size:14.5px;color:#3f4859;">Write <strong>three</strong> questions about the text that you would like to put to your classmates. At least one must begin with <em>To what extent…</em>.</p>
+      <textarea class="text-in js-save" data-key="u1-hw-questions" rows="3" placeholder="1. …&#10;2. …&#10;3. To what extent …?"></textarea>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion — prepare now, speak in the next lesson</div>
+        <ol>
+          <li>The writer suggests that officials design services for people whose lives they must <em>imagine</em>. Describe one public service in your city that appears to have been designed by somebody who imagined badly.</li>
+          <li>Should a civil service deliberately recruit from a wider range of social backgrounds, even if this means adjusting entrance examinations? Prepare arguments on both sides — you may be asked to defend either.</li>
+          <li>The final paragraph mentions apprentices recruited at eighteen. What would your country gain, and what might it lose, by such a change?</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ---------- HOMEWORK 2: OPEN CLOZE ---------- -->
+  <section class="task block" id="hw2">
+    <div class="task-head">
+      <div class="tnum">B</div>
+      <div class="t-titles">
+        <h3>Use of English — Part 2: Open Cloze</h3>
+        <div class="t-sub">Grammatical accuracy · one word per gap</div>
+      </div>
+      <div class="badges">
+        <span class="badge b-hw">Homework</span>
+        <span class="badge b-fce">FCE Part 2</span>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="rubric">
+        <p><strong>Instructions.</strong> For questions <strong>29–36</strong>, read the text below and think of the word which best fits each gap. Use <strong>only one word</strong> in each gap. There is an example at the beginning <strong>(0)</strong>.</p>
+        <p>The missing words are grammatical: prepositions, articles, auxiliaries, relative pronouns, quantifiers and linking words. Contractions count as two words, so they are never the answer.</p>
+      </div>
+
+      <div class="exam-text">
+        <h4 class="lead">Family Dynasties in State Governance</h4>
+
+        <p>The belief that a talent for government can be passed <span class="gap-num">0</span> <em>down</em> from one generation to the next is far older than democracy itself. In hereditary monarchies, office moved automatically from parent to child. In modern states the process is considerably subtler, <span class="gap-num">29</span><input class="inline-in js-save" data-key="u1-p2-29" aria-label="Answer for gap 29"> it has certainly not disappeared.</p>
+
+        <p>Research carried out in several European parliaments suggests that a candidate <span class="gap-num">30</span><input class="inline-in js-save" data-key="u1-p2-30" aria-label="Answer for gap 30"> father or mother has previously held public office is significantly more likely to be elected than an equally qualified rival without such a background. The effect appears to be strongest in regional assemblies, <span class="gap-num">31</span><input class="inline-in js-save" data-key="u1-p2-31" aria-label="Answer for gap 31"> voters are more likely to recognise a local surname.</p>
+
+        <p>Defenders of these families argue that children who grow <span class="gap-num">32</span><input class="inline-in js-save" data-key="u1-p2-32" aria-label="Answer for gap 32"> surrounded by discussions of policy acquire a practical understanding of the state that no university course can supply. There is <span class="gap-num">33</span><input class="inline-in js-save" data-key="u1-p2-33" aria-label="Answer for gap 33"> doubt that such an upbringing brings genuine advantages: useful contacts, early confidence and a familiarity with procedure that others acquire only after years in post.</p>
+
+        <p>Critics, <span class="gap-num">34</span><input class="inline-in js-save" data-key="u1-p2-34" aria-label="Answer for gap 34"> the other hand, point out that none of these advantages has anything to do with merit. If two candidates are equally competent, the one <span class="gap-num">35</span><input class="inline-in js-save" data-key="u1-p2-35" aria-label="Answer for gap 35"> the well-known name will almost always be preferred, and the public interest is not obviously served by the result.</p>
+
+        <p>For this reason, a number of governments have introduced rules preventing senior officials <span class="gap-num">36</span><input class="inline-in js-save" data-key="u1-p2-36" aria-label="Answer for gap 36"> appointing close relatives to any position under their direct control. Such rules are easy to write and notoriously difficult to enforce.</p>
+      </div>
+
+      <div class="acc">
+        <button class="acc-btn" aria-expanded="false"><span class="ico">i</span> Exam strategy — Part 2 <span class="chev">▾</span></button>
+        <div class="acc-panel">
+          <div class="phrase-grid">
+            <div class="phrase-col">
+              <h5>What usually goes in the gap</h5>
+              <ul>
+                <li>prepositions after verbs and adjectives (<em>prevent … from</em>)</li>
+                <li>relative pronouns (<em>who, which, whose, where</em>)</li>
+                <li>auxiliary and modal verbs</li>
+                <li>quantifiers (<em>no, little, few, much</em>)</li>
+                <li>linkers (<em>although, however, despite, whereas</em>)</li>
+                <li>parts of fixed phrases (<em>on the other hand</em>)</li>
+              </ul>
+            </div>
+            <div class="phrase-col">
+              <h5>Procedure</h5>
+              <ul>
+                <li>Read the whole text first for the general argument.</li>
+                <li>Decide what <em>kind</em> of word is missing before choosing one.</li>
+                <li>Look at the punctuation: a comma often signals a linker or a relative clause.</li>
+                <li>Re-read the completed sentence aloud in your head.</li>
+                <li>One word only — and never a contraction.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="followup">
+        <div class="fu-head"><span class="ic">?</span> Post-task discussion — bring your notes to class</div>
+        <ol>
+          <li>The text ends by saying that anti-nepotism rules are “easy to write and notoriously difficult to enforce”. Why should enforcement be so hard, and who ought to be responsible for it?</li>
+          <li>Is a political family an asset to a country — a store of experience — or a symptom of a closed system? Prepare a two-minute answer.</li>
+          <li>Compare this text with the reading in Task A. Do the two writers agree about the relationship between background and merit? Find one sentence from each text to support your answer.</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ---------- UNIT REFLECTION ---------- -->
+  <section class="task block" id="reflection">
+    <div class="task-head">
+      <div class="tnum">✓</div>
+      <div class="t-titles">
+        <h3>Unit Reflection</h3>
+        <div class="t-sub">Self-assessment · not marked</div>
+      </div>
+      <div class="badges"><span class="badge b-time">5 min</span></div>
+    </div>
+    <div class="task-body">
+      <ul class="checklist">
+        <li><input type="checkbox" id="rf1"><label for="rf1">I can describe personality and leadership styles using at least ten new B2 expressions.</label></li>
+        <li><input type="checkbox" id="rf2"><label for="rf2">I can speak for a full minute comparing two photographs without long pauses.</label></li>
+        <li><input type="checkbox" id="rf3"><label for="rf3">I can discuss values with a partner, invite their opinion and reach a joint decision.</label></li>
+        <li><input type="checkbox" id="rf4"><label for="rf4">I can form nouns, adjectives and negatives from a given root word.</label></li>
+        <li><input type="checkbox" id="rf5"><label for="rf5">I can talk about past habits and regrets using <em>used to</em>, <em>would</em>, <em>wish</em> and <em>if only</em>.</label></li>
+        <li><input type="checkbox" id="rf6"><label for="rf6">I can plan and write a balanced opinion essay of 140–190 words.</label></li>
+      </ul>
+      <div class="mini-h">The most useful thing I learned in this unit — and the one thing I still need to practise</div>
+      <textarea class="text-in js-save" data-key="u1-reflection" rows="3" placeholder="Be honest and specific."></textarea>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div><b>Unit 1 — Personality, Core Values &amp; Family Background</b><br>English for Public Administration · CEFR B2 · Cambridge B2 First (FCE) preparation</div>
+    <div style="text-align:right;">Student's Book · Web Edition<br>Answer keys and teaching notes are published separately in the Teacher's Book.</div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   UI SCRIPTS ONLY — no answer checking, no scoring, no keys.
+   1. Reading-progress bar
+   2. Accordions
+   3. Countdown timers
+   4. Live word counter
+   5. Local draft persistence (best-effort)
+   ============================================================ */
+(function () {
+  'use strict';
+
+  /* ---------- 1. READING PROGRESS BAR ---------- */
+  var fill = document.getElementById('progress-fill');
+  function updateProgress() {
+    var h = document.documentElement;
+    var scrollable = h.scrollHeight - h.clientHeight;
+    var pct = scrollable > 0 ? (h.scrollTop || document.body.scrollTop) / scrollable * 100 : 0;
+    if (fill) fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  /* ---------- 2. ACCORDIONS ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.acc-btn'), function (btn) {
+    var panel = btn.nextElementSibling;
+    btn.setAttribute('aria-expanded', 'false');
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      if (panel) panel.classList.toggle('open', !open);
+    });
+  });
+
+  /* ---------- 3. COUNTDOWN TIMERS ---------- */
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.timer'), function (box) {
+    var display = box.querySelector('[data-role="display"]');
+    var bar     = box.querySelector('[data-role="fill"]');
+    var startBt = box.querySelector('[data-action="start"]');
+    var pauseBt = box.querySelector('[data-action="pause"]');
+    var resetBt = box.querySelector('[data-action="reset"]');
+    if (!display || !startBt) return;
+
+    var total = parseInt(startBt.getAttribute('data-seconds'), 10) || 60;
+    var left = total;
+    var tick = null;
+
+    function render() {
+      display.textContent = pad(Math.floor(left / 60)) + ':' + pad(left % 60);
+      var pct = total > 0 ? (left / total) * 100 : 0;
+      if (bar) {
+        bar.style.width = pct + '%';
+        bar.classList.toggle('low', left <= Math.max(10, total * 0.2));
+      }
+      display.classList.toggle('done', left === 0);
+      display.classList.toggle('running', tick !== null && left > 0);
+    }
+
+    function stop() {
+      if (tick) { clearInterval(tick); tick = null; }
+      startBt.textContent = left === total ? 'Start' : 'Resume';
+      render();
+    }
+
+    startBt.addEventListener('click', function () {
+      if (tick || left === 0) return;
+      startBt.textContent = 'Running…';
+      tick = setInterval(function () {
+        left = left - 1;
+        if (left <= 0) { left = 0; clearInterval(tick); tick = null; startBt.textContent = 'Time'; }
+        render();
+      }, 1000);
+      render();
+    });
+
+    if (pauseBt) pauseBt.addEventListener('click', stop);
+    if (resetBt) resetBt.addEventListener('click', function () { left = total; stop(); });
+
+    render();
+  });
+
+  /* ---------- 4. LIVE WORD COUNTER ---------- */
+  var essay  = document.getElementById('essay');
+  var wcNum  = document.getElementById('wc-num');
+  var wcFill = document.getElementById('wc-fill');
+  var wcStat = document.getElementById('wc-status');
+  var MIN = 140, MAX = 190;
+
+  function countWords(str) {
+    var t = str.replace(/\s+/g, ' ').trim();
+    if (!t) return 0;
+    return t.split(' ').length;
+  }
+
+  function updateCounter() {
+    if (!essay) return;
+    var n = countWords(essay.value);
+    if (wcNum) wcNum.textContent = n;
+    var pct = Math.min(100, (n / MAX) * 100);
+    if (wcFill) {
+      wcFill.style.width = pct + '%';
+      wcFill.className = 'wc-fill' + (n > MAX ? ' over' : (n >= MIN ? ' good' : ''));
+    }
+    if (wcStat) {
+      wcStat.className = 'wc-status' + (n > MAX ? ' over' : (n >= MIN ? ' good' : ''));
+      if (n === 0)      wcStat.textContent = 'Target: 140–190 words';
+      else if (n < MIN) wcStat.textContent = (MIN - n) + ' more to reach 140';
+      else if (n <= MAX) wcStat.textContent = 'Within the target range';
+      else              wcStat.textContent = (n - MAX) + ' over the 190-word limit';
+    }
+  }
+  if (essay) { essay.addEventListener('input', updateCounter); updateCounter(); }
+
+  /* ---------- 5. LOCAL DRAFT PERSISTENCE (best-effort) ---------- */
+  var STORE = 'msu-pa-unit1-';
+  function safeGet(k) { try { return window.localStorage.getItem(STORE + k); } catch (e) { return null; } }
+  function safeSet(k, v) { try { window.localStorage.setItem(STORE + k, v); } catch (e) { /* ignore */ } }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.js-save'), function (el) {
+    var key = el.getAttribute('data-key');
+    if (!key) return;
+    var saved = safeGet(key);
+    if (saved !== null) el.value = saved;
+    el.addEventListener('input', function () { safeSet(key, el.value); });
+  });
+  updateCounter();
+})();
+</script>
+
+</body>
+</html>
